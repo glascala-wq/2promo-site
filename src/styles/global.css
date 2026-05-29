@@ -161,9 +161,9 @@
 
   /* ===== CLIENT LOGOS (trust marquee) ===== */
   .client-logo {
-    height: 36px;
+    height: 60px;
     width: auto;
-    max-width: 140px;
+    max-width: 200px;
     object-fit: contain;
     filter: brightness(0) invert(1);
     opacity: 0.65;

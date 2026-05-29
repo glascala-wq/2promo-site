@@ -31,13 +31,13 @@ const logos = [
         <!-- Set 1 -->
         <div class="flex gap-16 items-center shrink-0">
           {logos.map(l => (
-            <img src={l.src} alt={l.alt} class="client-logo" width="140" height="36" />
+            <img src={l.src} alt={l.alt} class="client-logo" width="200" height="60" />
           ))}
         </div>
         <!-- Set 2 — duplicate for seamless loop -->
         <div class="flex gap-16 items-center shrink-0" aria-hidden="true">
           {logos.map(l => (
-            <img src={l.src} alt="" class="client-logo" width="140" height="36" loading="lazy" />
+            <img src={l.src} alt="" class="client-logo" width="200" height="60" loading="lazy" />
           ))}
         </div>
       </div>
