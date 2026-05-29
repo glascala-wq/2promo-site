@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activeRoute?: 'home' | 'custom' | 'catalogo';
+  activeRoute?: 'home' | 'custom' | 'catalogo' | 'preventivo';
 }
 const { activeRoute = 'home' } = Astro.props;
 ---
@@ -13,7 +13,7 @@ const { activeRoute = 'home' } = Astro.props;
       <a href="/" class={`nav-link hover:text-orange transition ${activeRoute === 'home' ? 'active' : ''}`}>Home</a>
       <a href="/custom" class={`nav-link hover:text-orange transition ${activeRoute === 'custom' ? 'active' : ''}`}>Custom</a>
       <a href="/catalogo" class={`nav-link hover:text-orange transition ${activeRoute === 'catalogo' ? 'active' : ''}`}>Catalogo</a>
-      <a href="#preventivo" class="nav-link hover:text-orange transition">Preventivo</a>
+      <a href="/preventivo" class={`nav-link hover:text-orange transition ${activeRoute === 'preventivo' ? 'active' : ''}`}>Preventivo</a>
     </div>
     <div class="flex items-center gap-4">
       <a
@@ -28,7 +28,7 @@ const { activeRoute = 'home' } = Astro.props;
         <span>WhatsApp</span>
       </a>
       <a
-        href="#preventivo"
+        href="/preventivo"
         class="btn-orange bg-orange text-cream px-5 py-3 text-sm font-bold tracking-wide rounded-full hover:bg-ink transition hidden sm:inline-block"
         style="text-decoration:none;"
       >

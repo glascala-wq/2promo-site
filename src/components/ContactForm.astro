@@ -5,8 +5,9 @@ interface Props {
   preselectLinea?: 'standard' | 'custom' | 'unsure' | '';
   variant?: 'dark' | 'navy';
   id?: string;
+  showHeader?: boolean;
 }
-const { preselectLinea = '', variant = 'dark', id = 'preventivo' } = Astro.props;
+const { preselectLinea = '', variant = 'dark', id = 'preventivo', showHeader = true } = Astro.props;
 
 const bgClass = variant === 'navy' ? 'bg-navy' : 'bg-ink';
 ---
@@ -14,16 +15,20 @@ const bgClass = variant === 'navy' ? 'bg-navy' : 'bg-ink';
 <section id={id} class={`${bgClass} text-cream py-24 md:py-32 relative overflow-hidden`}>
   <div class="absolute -bottom-32 -left-20 w-[400px] h-[400px] rounded-full bg-orange/15 blur-3xl pointer-events-none"></div>
   <div class="max-w-5xl mx-auto px-6 relative">
-    <div class="flex items-center gap-3 mb-6">
-      <span class="w-8 h-px bg-orange"></span>
-      <span class="eyebrow text-orange">
-        {preselectLinea === 'custom' ? 'avete in mente qualcosa di particolare?' : 'pronti a partire?'}
-      </span>
-    </div>
-    <h2 class="font-display-tight text-5xl md:text-7xl leading-[0.95] mb-6 max-w-3xl" set:html={preselectLinea === 'custom' ? 'Raccontatelo qui.' : 'Raccontateci<br>cosa vi serve.'}></h2>
-    <p class="text-xl text-cream/80 mb-12 max-w-2xl">
-      Bozza visiva gratuita. Senza impegno. <span class="text-orange font-bold">Senza costi.</span>
-    </p>
+    {showHeader && (
+      <>
+        <div class="flex items-center gap-3 mb-6">
+          <span class="w-8 h-px bg-orange"></span>
+          <span class="eyebrow text-orange">
+            {preselectLinea === 'custom' ? 'avete in mente qualcosa di particolare?' : 'pronti a partire?'}
+          </span>
+        </div>
+        <h2 class="font-display-tight text-5xl md:text-7xl leading-[0.95] mb-6 max-w-3xl" set:html={preselectLinea === 'custom' ? 'Raccontatelo qui.' : 'Raccontateci<br>cosa vi serve.'}></h2>
+        <p class="text-xl text-cream/80 mb-12 max-w-2xl">
+          Bozza visiva gratuita. Senza impegno. <span class="text-orange font-bold">Senza costi.</span>
+        </p>
+      </>
+    )}
     <form
       id="form-preventivo"
       action="/api/lead"

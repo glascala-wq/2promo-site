@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Richiedi preventivo · 2promo.it"
+  description="Preventivo per gadget aziendali personalizzati. Bozza pre-stampa gratuita in 24h. Catalogo 30.000+ articoli + linea custom da 10 pezzi."
+>
+  <UrgencyBar />
+  <Navbar activeRoute="preventivo" />
+
+  <!-- Hero compatto -->
+  <header class="relative overflow-hidden bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— richiedi preventivo</span>
+      </div>
+      <h1 class="font-display-tight text-[10vw] md:text-[5.5vw] leading-[0.9] text-ink mb-6 max-w-4xl" data-reveal>
+        Raccontateci<br>cosa vi serve.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-3xl leading-relaxed" data-reveal>
+        Bozza pre-stampa <strong class="text-ink">gratuita</strong> in 24h. Senza impegno. <span class="text-orange font-bold">Senza costi.</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- Form (header interno nascosto, l'hero fa da intestazione) -->
+  <ContactForm id="preventivo" showHeader={false} />
+
+  <!-- Trust signals -->
+  <section class="bg-cream py-16 md:py-20 border-t border-ink/10">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div data-reveal>
+          <div class="font-display-tight text-orange text-5xl mb-2">24h</div>
+          <p class="text-ink/70">Rispondiamo entro 24h lavorative</p>
+        </div>
+        <div data-reveal>
+          <div class="font-display-tight text-orange text-5xl mb-2">€0</div>
+          <p class="text-ink/70">Bozza pre-stampa gratuita inclusa</p>
+        </div>
+        <div data-reveal>
+          <div class="font-display-tight text-orange text-5xl mb-2">12</div>
+          <p class="text-ink/70">Anni di stampa per aziende dal 2014</p>
+        </div>
+      </div>
+      <div class="text-center mt-12 pt-8 border-t border-ink/10">
+        <p class="text-ink/70 mb-4">Preferite contatto immediato?</p>
+        <a
+          href="https://wa.me/393451448645?text=Ciao%202promo%2C%20vorrei%20un%20preventivo"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-ink font-bold underline underline-offset-4 hover:text-orange transition"
+        >
+          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current" aria-hidden="true"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4 7.94 7.94 0 0 0 5.1 16.16L4 20.66l4.66-1.22a7.94 7.94 0 0 0 3.79.97h.01a7.94 7.94 0 0 0 7.94-7.93 7.88 7.88 0 0 0-2.8-6.16zM12.05 18.95h-.01a6.58 6.58 0 0 1-3.36-.92l-.24-.14-2.77.72.74-2.7-.16-.25a6.6 6.6 0 1 1 12.21-3.5 6.61 6.61 0 0 1-6.41 6.79zm3.62-4.94c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.45.1-.13.2-.51.65-.62.78-.11.13-.23.15-.43.05a5.43 5.43 0 0 1-2.71-2.37c-.2-.35.2-.32.59-1.08.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.39c-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66 0 .98.71 1.92.81 2.05.1.13 1.4 2.13 3.39 2.99 1.99.86 1.99.57 2.35.53.36-.04 1.18-.48 1.34-.95.17-.46.17-.86.12-.95-.05-.08-.18-.13-.38-.23z"/></svg>
+          Scriveteci su WhatsApp · +39 345 144 86 45
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

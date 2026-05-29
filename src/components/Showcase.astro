@@ -1,40 +1,89 @@
 ---
-// Showcase — bestseller marquee con foto reali prodotto
-// Immagini via API Midocean (build-time fetch)
+// Showcase — bestseller magazine, 10 prodotti, marquee bidirezionale
+// Immagini catalogo (build-time fetch dal gateway prodotti)
 
 const products = [
-  { img: '/products/product-2279.jpg', name: 'Power bank 5000 mAh',         cat: 'tech',      moq: 'Da 100 pezzi' },
-  { img: '/products/product-6451.jpg', name: 'Porta telefono in bambù',     cat: 'office',    moq: 'Da 100 pezzi' },
-  { img: '/products/product-9963.jpg', name: 'Porta tè in vetro 850ml',     cat: 'drinkware', moq: 'Da 100 pezzi' },
-  { img: '/products/product-2156.jpg', name: 'Set connettori 9 in 1',       cat: 'tech',      moq: 'Da 100 pezzi' },
+  { img: '/products/product-2279.jpg',  name: 'Power bank 5000 mAh',      cat: 'tech',      bg: 'bg-navy text-cream',                     pill: 'bg-orange text-cream' },
+  { img: '/products/borraccia-rpet.jpg', name: 'Borraccia sportiva 1L',    cat: 'drinkware', bg: 'bg-cream text-ink border border-ink/10',  pill: 'bg-ink text-cream' },
+  { img: '/products/shopper-cotone.jpg', name: 'Shopper cotone bio',       cat: 'eco',       bg: 'bg-orange-pale text-ink',                pill: 'bg-orange text-cream' },
+  { img: '/products/penna-sfera.jpg',    name: 'Penna a sfera premium',    cat: 'office',    bg: 'bg-ink text-cream',                      pill: 'bg-orange text-cream' },
+  { img: '/products/zaino-rpet.jpg',     name: 'Zaino laptop RPET',        cat: 'lifestyle', bg: 'bg-cream text-ink border border-ink/10',  pill: 'bg-ink text-cream' },
+  { img: '/products/product-9963.jpg',   name: 'Porta tè in vetro 850ml',  cat: 'drinkware', bg: 'bg-navy text-cream',                     pill: 'bg-orange text-cream' },
+  { img: '/products/product-6451.jpg',   name: 'Porta telefono in bambù',  cat: 'office',    bg: 'bg-orange-pale text-ink',                pill: 'bg-orange text-cream' },
+  { img: '/products/ombrello.jpg',       name: 'Ombrello automatico',      cat: 'lifestyle', bg: 'bg-ink text-cream',                      pill: 'bg-orange text-cream' },
+  { img: '/products/taccuino-a5.jpg',    name: 'Taccuino A5',              cat: 'office',    bg: 'bg-cream text-ink border border-ink/10',  pill: 'bg-ink text-cream' },
+  { img: '/products/product-2156.jpg',   name: 'Set connettori 9 in 1',    cat: 'tech',      bg: 'bg-navy text-cream',                     pill: 'bg-orange text-cream' },
 ];
+
+const row1 = products.slice(0, 5);
+const row2 = products.slice(5, 10);
+
+const pills = ['tech', 'drinkware', 'eco', 'textile', 'office', 'lifestyle'];
 ---
 
-<section class="bg-cream py-16 overflow-hidden border-y border-ink/10">
-  <div class="max-w-7xl mx-auto px-6 mb-8 flex items-center gap-3">
-    <span class="w-8 h-px bg-ink"></span>
-    <span class="eyebrow text-ink/70">i bestseller</span>
+<section class="bg-cream py-20 md:py-24 overflow-hidden border-y border-ink/10">
+  <div class="max-w-7xl mx-auto px-6 mb-8">
+    <div class="flex items-center gap-3 mb-5" data-reveal>
+      <span class="w-8 h-px bg-ink"></span>
+      <span class="eyebrow text-ink/70">— i più richiesti</span>
+    </div>
+    <h2 class="font-display-tight text-5xl md:text-7xl text-ink leading-[0.9] mb-6" data-reveal>
+      Bestseller del momento.
+    </h2>
+    <div class="flex flex-wrap gap-2" data-reveal>
+      {pills.map((p, i) => (
+        <span class={`px-3 py-1 rounded-full text-xs font-bold tracking-wide ${i === 2 ? 'bg-orange text-cream' : 'bg-ink/5 text-ink/70'}`}>{p}</span>
+      ))}
+    </div>
   </div>
-  <div class="relative">
-    <div class="flex gap-6 marquee-track-fast whitespace-nowrap">
+
+  <!-- Row 1 — scroll left -->
+  <div class="relative mb-4">
+    <div class="flex gap-5 marquee-track-fast">
       {[0, 1].map(set => (
-        <div class="flex gap-6" aria-hidden={set === 1 ? 'true' : 'false'}>
-          {products.map((p, i) => (
-            <div class="showcase-card bg-cream rounded-2xl overflow-hidden border border-ink/10 hover:shadow-2xl transition min-w-[260px]">
+        <div class="flex gap-5" aria-hidden={set === 1 ? 'true' : 'false'}>
+          {row1.map((p, i) => (
+            <div class={`showcase-card relative rounded-3xl overflow-hidden min-w-[280px] group ${p.bg}`}>
+              <div class={`absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-bold tracking-wide ${p.pill}`}>{p.cat}</div>
               <div class="overflow-hidden bg-white" style="aspect-ratio:1/1;">
-                <img
-                  src={p.img}
-                  alt={p.name}
-                  class="w-full h-full object-contain p-4 hover:scale-105 transition duration-500"
-                  loading={set === 0 && i < 2 ? 'eager' : 'lazy'}
-                  width="260"
-                  height="260"
-                />
+                <img src={p.img} alt={p.name} class="w-full h-full object-contain p-6 group-hover:scale-110 transition duration-700" loading={set === 0 && i < 2 ? 'eager' : 'lazy'} width="280" height="280" />
               </div>
-              <div class="p-4">
-                <div class="font-display text-base text-ink mb-0.5">{p.name}</div>
-                <div class="text-sm text-ink/50">{p.cat} · {p.moq}</div>
+              <div class="p-5">
+                <div class="font-display text-lg mb-0.5">{p.name}</div>
+                <div class="text-sm opacity-60">Da 100 pezzi</div>
               </div>
+              <a href="/preventivo" class="absolute inset-0 bg-orange/95 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-start justify-end p-6 text-cream" style="text-decoration:none;">
+                <div class="font-display text-2xl mb-2 leading-tight">{p.name}</div>
+                <div class="text-sm mb-4 opacity-90">{p.cat} · Pantone su richiesta</div>
+                <span class="font-bold underline">Chiedi preventivo →</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Row 2 — scroll right (reverse) -->
+  <div class="relative">
+    <div class="flex gap-5 marquee-track-rev">
+      {[0, 1].map(set => (
+        <div class="flex gap-5" aria-hidden={set === 1 ? 'true' : 'false'}>
+          {row2.map((p) => (
+            <div class={`showcase-card relative rounded-3xl overflow-hidden min-w-[280px] group ${p.bg}`}>
+              <div class={`absolute top-4 left-4 z-10 px-3 py-1 rounded-full text-xs font-bold tracking-wide ${p.pill}`}>{p.cat}</div>
+              <div class="overflow-hidden bg-white" style="aspect-ratio:1/1;">
+                <img src={p.img} alt={p.name} class="w-full h-full object-contain p-6 group-hover:scale-110 transition duration-700" loading="lazy" width="280" height="280" />
+              </div>
+              <div class="p-5">
+                <div class="font-display text-lg mb-0.5">{p.name}</div>
+                <div class="text-sm opacity-60">Da 100 pezzi</div>
+              </div>
+              <a href="/preventivo" class="absolute inset-0 bg-orange/95 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-start justify-end p-6 text-cream" style="text-decoration:none;">
+                <div class="font-display text-2xl mb-2 leading-tight">{p.name}</div>
+                <div class="text-sm mb-4 opacity-90">{p.cat} · Pantone su richiesta</div>
+                <span class="font-bold underline">Chiedi preventivo →</span>
+              </a>
             </div>
           ))}
         </div>
