@@ -74,7 +74,9 @@ const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID ?? '1547004352951203'
     gtag('js', new Date());
     gtag('config', 'AW-16941964190');
     gtag('config', 'G-9Y48RGQVJD');
-    // Carica lo script gtag (~350KB) dopo il load per non competere con LCP
+    // Carica lo script gtag (~350KB) al primo segnale di interazione utente,
+    // o come fallback dopo 4s di idle. Evita di competere con il main thread
+    // nella finestra LCP (grande guadagno performance mobile).
     function loadGtag(){
       if (window.__gtagLoaded) return;
       window.__gtagLoaded = true;
@@ -83,15 +85,11 @@ const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID ?? '1547004352951203'
       s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-16941964190';
       document.head.appendChild(s);
     }
-    if (document.readyState === 'complete') {
-      setTimeout(loadGtag, 1200);
-    } else {
-      window.addEventListener('load', function(){ setTimeout(loadGtag, 1200); });
-    }
-    // Fallback: carica comunque al primo input se l'utente interagisce subito
-    ['scroll','pointerdown','keydown'].forEach(function(ev){
+    ['scroll','pointerdown','keydown','touchstart','mousemove'].forEach(function(ev){
       window.addEventListener(ev, loadGtag, { once: true, passive: true });
     });
+    // Fallback idle: se l'utente non interagisce, carica comunque dopo 4s
+    (window.requestIdleCallback || window.setTimeout)(function(){ setTimeout(loadGtag, 4000); }, { timeout: 5000 });
   </script>
 
   <!-- GSAP + ScrollTrigger (from CDN) — defer per non bloccare il render -->
