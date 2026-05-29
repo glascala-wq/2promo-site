@@ -132,25 +132,7 @@ const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID ?? '1547004352951203'
       }
 
       // ===== KINETIC TEXT =====
-      const words = ['tutto', 'ovunque', 'davvero', 'sempre', 'tanto'];
-      const kinetic = document.getElementById('kinetic-word');
-      if (kinetic) {
-        let i = 0;
-        setInterval(function() {
-          i = (i + 1) % words.length;
-          if (typeof gsap !== 'undefined') {
-            gsap.to(kinetic, {
-              opacity: 0, y: -8, duration: 0.2,
-              onComplete: function() {
-                kinetic.textContent = words[i];
-                gsap.to(kinetic, { opacity: 1, y: 0, duration: 0.3, ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)' });
-              }
-            });
-          } else {
-            kinetic.textContent = words[i];
-          }
-        }, 2400);
-      }
+      // kinetic text rimosso — parola fissa "tutto"
 
       // ===== COUNTERS =====
       function animateCounter(el, target, duration) {
