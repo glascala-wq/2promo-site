@@ -53,6 +53,8 @@
   }
   .marquee-track-fast {
     animation: marquee 22s linear infinite;
+    will-change: transform;
+    width: max-content;
   }
 
   /* ===== DECORATIVE ===== */
