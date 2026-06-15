@@ -1,5 +1,7 @@
 ---
 // CatalogForm — email-only form to receive PDF catalog
+// Anti-spam (iter-10): Turnstile site key pubblica per il widget
+const TURNSTILE_SITE_KEY = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 <section class="bg-cream py-24 md:py-28">
   <div class="max-w-3xl mx-auto px-6 text-center">
@@ -17,31 +19,48 @@
       id="form-catalogo"
       action="/api/catalogo"
       method="POST"
-      class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
+      class="flex flex-col gap-4 max-w-lg mx-auto"
       novalidate
     >
-      <input
-        type="email"
-        name="email"
-        placeholder="email@azienda.com"
-        required
-        class="flex-1 bg-cream border-2 border-ink/20 rounded-full px-6 py-4 text-ink placeholder:text-ink/40 focus:border-orange focus:outline-none transition"
-      />
-      <button
-        type="submit"
-        class="btn-orange bg-orange text-cream px-7 py-4 text-sm font-bold tracking-wide rounded-full hover:bg-ink transition whitespace-nowrap"
-      >
-        Inviami il PDF →
-      </button>
+      <!-- Anti-spam L1: honeypot — non rimuovere -->
+      <div aria-hidden="true" style="position:absolute; left:-9999px; top:-9999px; height:0; width:0; overflow:hidden;">
+        <label for="website-cat">Leave this field empty</label>
+        <input type="text" name="website" id="website-cat" tabindex="-1" autocomplete="off" />
+      </div>
+      <!-- Anti-spam L3: timestamp di caricamento (sovrascritto lato client) -->
+      <input type="hidden" name="_form_loaded" value="0" />
+      <div class="flex flex-col sm:flex-row gap-3 w-full">
+        <input
+          type="email"
+          name="email"
+          placeholder="email@azienda.com"
+          required
+          class="flex-1 bg-cream border-2 border-ink/20 rounded-full px-6 py-4 text-ink placeholder:text-ink/40 focus:border-orange focus:outline-none transition"
+        />
+        <button
+          type="submit"
+          class="btn-orange bg-orange text-cream px-7 py-4 text-sm font-bold tracking-wide rounded-full hover:bg-ink transition whitespace-nowrap"
+        >
+          Inviami il PDF →
+        </button>
+      </div>
+      <!-- Anti-spam L2: Cloudflare Turnstile (dentro il form → token in FormData) -->
+      <div class="cf-turnstile flex justify-center" data-sitekey={TURNSTILE_SITE_KEY} data-theme="light" data-size="flexible"></div>
     </form>
     <p class="text-sm text-ink/70 mt-4">Nessuno spam. Solo il PDF + qualche idea utile ogni tanto.</p>
   </div>
 </section>
 
+<!-- Anti-spam L2: Turnstile loader -->
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script is:inline>
   (function() {
     var form = document.getElementById('form-catalogo');
     if (!form) return;
+    // L3: timestamp fresco al mount client (lo SSR/static è stale)
+    var ts = form.querySelector('input[name="_form_loaded"]');
+    if (ts) ts.value = Date.now();
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       var btn = form.querySelector('button[type="submit"]');
@@ -59,6 +78,7 @@
         if (resp.ok) {
           if (input) input.value = '';
           if (btn) { btn.textContent = 'Inviato ✓'; }
+          if (window.turnstile) { try { window.turnstile.reset(); } catch(_) {} }
           setTimeout(function() {
             if (btn) { btn.textContent = 'Inviami il PDF →'; btn.disabled = false; }
           }, 3000);
@@ -67,6 +87,8 @@
         }
       } catch(err) {
         if (btn) { btn.textContent = 'Riprova →'; btn.disabled = false; }
+        // Turnstile è single-use: reset per consentire un nuovo tentativo
+        if (window.turnstile) { try { window.turnstile.reset(); } catch(_) {} }
         alert('Qualcosa è andato storto. Riprova o scrivici a info@2promo.it');
       }
     });

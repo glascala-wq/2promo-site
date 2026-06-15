@@ -12,6 +12,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const BREVO_API_KEY = env.BREVO_API_KEY;
   const BREVO_LIST_ID_PREVENTIVO = parseInt(env.BREVO_LIST_ID_PREVENTIVO ?? '17', 10);
   const BREVO_NOTIFICATION_EMAIL = env.BREVO_NOTIFICATION_EMAIL ?? 'info@2promo.it';
+  const TURNSTILE_SECRET_KEY = env.TURNSTILE_SECRET_KEY;
 
   if (!BREVO_API_KEY) {
     return new Response(JSON.stringify({ error: 'Missing BREVO_API_KEY' }), {
@@ -30,6 +31,64 @@ export const POST: APIRoute = async ({ request, locals }) => {
       headers: { 'Content-Type': 'application/json' },
     });
   }
+
+  // === ANTI-SPAM (iter-10) — validato prima di toccare Brevo ===
+
+  // L1: Honeypot. Bot riempie il campo trappola → fake success (non rivelare il check).
+  const honeypot = (formData.get('website') as string | null) ?? '';
+  if (honeypot.length > 0) {
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // L3: Time-based. Submit troppo veloce (<3s) → bot. Fake success.
+  const formLoaded = parseInt((formData.get('_form_loaded') as string | null) ?? '0', 10);
+  const elapsed = Date.now() - formLoaded;
+  if (!formLoaded || elapsed < 3000) {
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+  if (elapsed > 1000 * 60 * 60 * 24) {
+    return new Response(JSON.stringify({ error: 'Sessione scaduta, ricarica la pagina' }), {
+      status: 410,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
+  // L2: Cloudflare Turnstile (chiamata esterna → per ultima).
+  const turnstileToken = (formData.get('cf-turnstile-response') as string | null) ?? '';
+  if (!turnstileToken) {
+    return new Response(JSON.stringify({ error: 'Verifica anti-spam richiesta' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+  if (TURNSTILE_SECRET_KEY) {
+    const verifyResp = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+        remoteip: request.headers.get('CF-Connecting-IP') ?? '',
+      }),
+    });
+    const verifyData = (await verifyResp.json()) as { success?: boolean };
+    if (!verifyData.success) {
+      return new Response(JSON.stringify({ error: 'Verifica anti-spam fallita. Riprova.' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+  } else {
+    console.error('TURNSTILE_SECRET_KEY mancante: skip verify (configurare env var).');
+  }
+
+  // === LEAD PROCESSING ===
 
   const nome = (formData.get('nome') as string | null)?.trim() ?? '';
   const azienda = (formData.get('azienda') as string | null)?.trim() ?? '';
