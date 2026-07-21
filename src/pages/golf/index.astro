@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Navbar from '../../components/Navbar.astro';
+import Trust from '../../components/Trust.astro';
+import Faq from '../../components/Faq.astro';
+import Footer from '../../components/Footer.astro';
+import GolfHero from '../../components/golf/GolfHero.astro';
+import GolfKits from '../../components/golf/GolfKits.astro';
+import GolfStrutturaGrafica from '../../components/golf/GolfStrutturaGrafica.astro';
+import GolfComeFunziona from '../../components/golf/GolfComeFunziona.astro';
+import GolfCatalogoCompleto from '../../components/golf/GolfCatalogoCompleto.astro';
+import GolfRinnovo from '../../components/golf/GolfRinnovo.astro';
+import GolfContactForm from '../../components/golf/GolfContactForm.astro';
+
+const faqItems = [
+  {
+    q: 'Quanto tempo prima della gara dobbiamo ordinare?',
+    a: "Il prima possibile: indicateci la data della gara nel form e vi confermiamo la data di consegna nel preventivo, sempre con un margine di sicurezza — almeno [TBD-GG-BUFFER] giorni lavorativi prima dell'evento. Se non ci stiamo, ve lo diciamo subito in fase di preventivo, non a ridosso della gara.",
+    open: true,
+  },
+  {
+    q: 'Come funziona la bozza grafica?',
+    a: "Riceverete una bozza grafica entro 24h lavorative dalla richiesta. La produzione parte solo dopo la vostra approvazione: nessuna sorpresa tra quello che avete visto e quello che arriva al circolo.",
+  },
+  {
+    q: 'Come si paga?',
+    a: "Bonifico bancario, dopo l'approvazione della bozza e la conferma del preventivo con la data di consegna. Nessun pagamento online, nessun carrello.",
+  },
+  {
+    q: 'Cosa succede alla fine della stagione?',
+    a: "Le bandiere si usurano in una stagione. A febbraio vi ricontattiamo noi per il rinnovo, così il campo è pronto per l'apertura senza doverci pensare. Potete segnalare l'interesse già ora, con il checkbox nel form.",
+  },
+  {
+    q: 'Siete abilitati MEPA?',
+    a: "Sì, siamo fornitore abilitato MEPA.",
+  },
+  {
+    q: 'Possiamo riordinare solo la grafica, senza ricomprare la struttura?',
+    a: "Sì: è il modello su cui è costruito il catalogo golf. L'hardware (fondali, totem, gazebo) si acquista una volta; i formati restano in archivio e ogni riordino di grafica — bandiere sponsor, teli, banner — si fa con un'email, in [TBD-GG-RIORDINO] giorni lavorativi.",
+  },
+  {
+    q: 'Fate anche allestimenti fuori dai 3 kit?',
+    a: 'Sì: fondali per la premiazione, gazebo hospitality, banchetti segreteria, segnaletica percorso, gonfiabili, tovaglie e bandiere istituzionali. Vedete il <a href="#catalogo" class="text-orange underline">catalogo completo</a> più sotto, o richiedete un preventivo classico.',
+  },
+];
+---
+
+<BaseLayout
+  title="Allestimenti e Bandiere per Gare di Golf | 2promo"
+  description="Bandiere gara, kit sponsor e allestimenti per circoli golf: prezzi pubblici, grafica inclusa, consegna confermata prima della gara. Fornitore abilitato MEPA."
+  noindex={true}
+>
+  <Breadcrumbs items={[{ name: 'Golf', url: '/golf' }]} />
+  <Navbar activeRoute="other" />
+  <GolfHero />
+  <Trust variant="marquee" />
+  <GolfKits />
+  <GolfStrutturaGrafica />
+  <GolfComeFunziona />
+  <GolfCatalogoCompleto />
+  <GolfRinnovo />
+  <Faq items={faqItems} eyebrow="domande frequenti" heading="Tempi, bozza, pagamento.<br>Le risposte concrete." />
+  <GolfContactForm />
+  <Footer />
+</BaseLayout>

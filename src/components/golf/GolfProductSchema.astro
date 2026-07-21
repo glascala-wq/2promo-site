@@ -1,0 +1,23 @@
+---
+// Product JSON-LD per kit golf. Niente prezzo placeholder: il campo offers/price si omette
+// finché [TBD-PREZZO-*] non è sostituito con un valore reale (regola brief §8).
+import type { GolfKit } from '../../data/golf-kits';
+interface Props {
+  kit: GolfKit;
+}
+const { kit } = Astro.props;
+const SITE = 'https://www.2promo.it';
+
+const product = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: kit.name,
+  description: kit.description,
+  brand: { '@type': 'Brand', name: '2promo.it' },
+  category: 'Allestimenti e bandiere per gare golf',
+  url: `${SITE}/golf/${kit.slug}`,
+};
+
+const json = JSON.stringify(product).replace(/</g, '\\u003c');
+---
+<script type="application/ld+json" set:html={json} />

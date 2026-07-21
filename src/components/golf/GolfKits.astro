@@ -1,0 +1,44 @@
+---
+import { GOLF_KITS } from '../../data/golf-kits';
+---
+<section id="kit" class="bg-cream py-24 md:py-28">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6" data-reveal>
+      <span class="eyebrow text-ink/70">i kit</span>
+    </div>
+    <h2 class="font-display-tight text-4xl md:text-6xl leading-[1] mb-6 max-w-3xl" data-reveal>
+      Tre kit, prezzo pubblico, grafica inclusa.
+    </h2>
+    <p class="text-lg text-ink/70 max-w-2xl mb-14" data-reveal>
+      Non un catalogo infinito a preventivo: tre composizioni pensate per le esigenze reali di sponsor, circolo e stagione. Prezzo dichiarato, nessuna sorpresa.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {GOLF_KITS.map((kit) => (
+        <div class="flex flex-col bg-white border-2 border-ink/10 rounded-2xl p-8 hover:border-orange transition" data-reveal>
+          <span class="eyebrow text-orange mb-4">{kit.eyebrow}</span>
+          <h3 class="font-display text-2xl text-ink mb-3 leading-tight">{kit.name}</h3>
+          <p class="text-ink/70 mb-6 leading-relaxed">{kit.tagline}</p>
+          <ul class="space-y-2 mb-8 text-sm text-ink/70">
+            {kit.includes.map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="text-orange font-bold mt-0.5">✓</span>
+                <span set:html={item} />
+              </li>
+            ))}
+          </ul>
+          <div class="mt-auto">
+            <div class="font-display-tight text-2xl text-ink mb-1">{kit.priceLabel}</div>
+            <p class="text-xs text-ink/50 mb-6">Grafica inclusa · consegna confermata per la data gara</p>
+            <a
+              href={`/golf/${kit.slug}`}
+              class="btn-orange block text-center bg-orange text-cream py-4 px-6 text-sm font-bold tracking-wide rounded-full hover:bg-ink transition"
+              style="text-decoration:none;"
+            >
+              Scopri {kit.name} →
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
