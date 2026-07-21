@@ -6,6 +6,7 @@ import Faq from '../../components/Faq.astro';
 import Footer from '../../components/Footer.astro';
 import GolfContactForm from '../../components/golf/GolfContactForm.astro';
 import GolfProductSchema from '../../components/golf/GolfProductSchema.astro';
+import GolfIcon from '../../components/golf/GolfIcon.astro';
 import { getGolfKit } from '../../data/golf-kits';
 
 const kit = getGolfKit('kit-green')!;
@@ -51,6 +52,9 @@ const faqItems = [
   <section class="bg-cream py-16 md:py-20">
     <div class="max-w-4xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-10">
       <div data-reveal>
+        <div class={`w-20 h-20 rounded-2xl ${kit.tile} flex items-center justify-center mb-6`}>
+          <GolfIcon name={kit.icon} class={`w-12 h-12 ${kit.tile === 'bg-navy' ? 'text-cream' : 'text-ink'}`} />
+        </div>
         <h2 class="font-display-tight text-2xl md:text-3xl text-ink mb-6">Cosa include</h2>
         <ul class="space-y-3">
           {kit.includes.map((item) => (

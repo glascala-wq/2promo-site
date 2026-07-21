@@ -26,18 +26,19 @@ I kit sono ancora un'idea di composizione, non un listino definitivo (indicazion
 |---|---|---|
 | `[TBD-ADS-CONVERSION-LABEL]` | `src/pages/golf/grazie.astro` (commento e variabile `GOLF_ADS_CONVERSION_LABEL`) | Label della conversione Google Ads dedicata al verticale golf. Non bloccante: finché la env var `PUBLIC_GOLF_ADS_CONVERSION_LABEL` resta vuota, il codice non spara l'evento conversione (niente placeholder letterale inviato a Google Ads), parte solo l'evento GA4 `generate_lead`. Da valorizzare su Cloudflare Pages quando la campagna Ads golf viene creata. |
 
-## Foto prodotto ancora mancanti
+## Immagini
 
-La maggior parte delle foto necessarie sono state trovate sul catalogo Ultima Displays e sono già in uso (dettaglio in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md`, file interno). Resta un solo gruppo scoperto: il tessile golf vero e proprio (bandiere gara, bandiere circolo, bandiere green, tee marker, tovaglie), fornito da Canepa & Campi, per cui non esiste ancora una foto disponibile online.
+Ogni card di kit e catalogo ha ormai un visual reale: le 3 foto prodotto pulite trovate su Ultima Displays (fondali, gazebo, gonfiabili), trattate in un duotone navy/cream coerente con la palette 2promo, più 6 icone originali disegnate da zero per gli item senza foto disponibile (banchetti, segnaletica, tovaglie/bandiere istituzionali, roll up, totem, bandiera buca). Nessun placeholder "Foto in arrivo" rimasto. Dettaglio completo di ogni scelta in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (file interno).
+
+Resta scoperto solo il tessile golf vero e proprio (bandiere gara, bandiere circolo, bandiere green, tee marker), fornito da Canepa & Campi: oggi rappresentato dalle icone, non da foto reali del prodotto specifico.
 
 | Item | Dove | Nota |
 |---|---|---|
-| `[TBD-FOTO]` Tovaglie e bandiere istituzionali | `src/components/golf/GolfCatalogoCompleto.astro` (ultimo item dell'array `items`) | Prodotto Canepa & Campi, non Ultima Displays: non sostituire con una foto di bandiere pubblicitarie generiche, sarebbe un prodotto visivamente diverso |
-| `[TBD-FOTO]` Bandiere gara, bandiere circolo, bandiere green, tee marker | Non presenti come card fotografiche in nessuna pagina | Da fotografare quando arriva un campione fisico, o recuperare da area riservata fornitore Canepa & Campi |
+| `[TBD-FOTO]` Bandiere gara, bandiere circolo, bandiere green, tee marker | Rappresentati con icone generiche nelle card kit, non foto | Da fotografare quando arriva un campione fisico, o recuperare da area riservata fornitore Canepa & Campi, poi sostituire l'icona con la foto reale |
 
 ## Come procedere
 
 1. Cercare e sostituire ogni placeholder in questo file con il valore reale.
 2. Aggiornare `src/data/golf-kits.ts` nei punti indicati.
-3. Aggiungere le foto mancanti in `public/golf/products/` seguendo le regole in `verticale-golf/mapping-prodotti.md`, poi sostituire `image: null` con il path nel file indicato.
+3. Quando arriva una foto vera del tessile golf, seguire le regole in `verticale-golf/mapping-prodotti.md`, salvarla in `public/golf/products/`, poi sostituire l'`icon` con un `image` nel file indicato (vedi `GolfCatalogoCompleto.astro` o `golf-kits.ts` per il pattern già in uso sugli altri item).
 4. Cancellare le righe di questo registro via via che vengono risolte.

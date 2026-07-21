@@ -1,6 +1,8 @@
 // Dati dei 3 kit del verticale golf: fonte unica per /golf e le pagine di dettaglio.
 // I kit sono un'idea di composizione, non ancora un listino definitivo: niente prezzo
 // pubblicato, il prezzo si chiede via form (vedi ctaLabel).
+export type GolfIconName = 'rollup' | 'totem' | 'bandiera-buca';
+
 export interface GolfKit {
   slug: string;
   name: string;
@@ -8,7 +10,8 @@ export interface GolfKit {
   tagline: string;
   description: string;
   includes: string[];
-  image?: string;
+  icon: GolfIconName;
+  tile: string;
   metaTitle: string;
   metaDescription: string;
 }
@@ -29,7 +32,8 @@ export const GOLF_KITS: GolfKit[] = [
       'Tee marker personalizzati ([TBD-QTY-TEEMARKER] pezzi)',
       '1 roll up per la premiazione',
     ],
-    image: '/golf/products/rollup-premiazione.webp',
+    icon: 'rollup',
+    tile: 'bg-orange-pale',
     metaTitle: 'Kit Gara Sponsor: Bandiere e Allestimento Gara Golf | 2promo',
     metaDescription:
       'Kit Gara Sponsor: 18 bandiere gara logate, 2 banner, tee marker e roll up premiazione. Grafica inclusa, consegna confermata prima della gara.',
@@ -46,7 +50,8 @@ export const GOLF_KITS: GolfKit[] = [
       'Tovaglia premiazioni',
       'Totem ingresso',
     ],
-    image: '/golf/products/totem-ingresso.webp',
+    icon: 'totem',
+    tile: 'bg-navy',
     metaTitle: 'Kit Circolo: Bandiere e Allestimento Golf Club | 2promo',
     metaDescription:
       'Kit Circolo: bandiere personalizzate del club, tovaglia premiazioni, totem ingresso. Grafica inclusa, consegna confermata.',
@@ -62,6 +67,8 @@ export const GOLF_KITS: GolfKit[] = [
       'Set bandiere campo (18 buche)',
       'Materiale tessile di ricambio',
     ],
+    icon: 'bandiera-buca',
+    tile: 'bg-orange-pale',
     metaTitle: 'Kit Green: Bandiere Campo Golf 18 Buche | 2promo',
     metaDescription:
       'Kit Green: set bandiere campo per le 18 buche e materiale tessile di ricambio per il rinnovo stagionale. Consegna confermata.',

@@ -1,6 +1,6 @@
 # Report: Verticale Golf (`/golf`)
 
-Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con due correzioni di rotta date da Giovanni in sessione lo stesso giorno (vedi "Round 2" più sotto).
+Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno (vedi "Round 2" e "Round 3" più sotto).
 
 ## Cosa c'è
 
@@ -9,7 +9,7 @@ Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `
 - `/golf/grazie`: thank-you dedicata, tag conversione golf separato (Google Ads condizionato a env var, GA4 sempre attivo)
 - `src/pages/api/lead-golf.ts`: Brevo (lista dedicata) più notifica email interna e redirect, stesso pattern anti-spam (honeypot, timestamp, Turnstile) di `/api/lead.ts`
 - `src/data/golf-kits.ts`: fonte unica dei 3 kit, usata sia dalla griglia su `/golf` sia dalle pagine di dettaglio
-- Componenti nuovi in `src/components/golf/` (Hero, Kits, StrutturaGrafica, ComeFunziona, CatalogoCompleto, Rinnovo, ContactForm, ProductSchema). Nessun componente esistente del sito modificato, tutti riusati as-is (BaseLayout, Navbar, Footer, CookieBanner, Trust, Faq, Breadcrumbs)
+- Componenti nuovi in `src/components/golf/` (Hero, Kits, StrutturaGrafica, ComeFunziona, CatalogoCompleto, Rinnovo, ContactForm, ProductSchema, Icon). Nessun componente esistente del sito modificato, tutti riusati as-is (BaseLayout, Navbar, Footer, CookieBanner, Trust, Faq, Breadcrumbs)
 
 ## Brevo
 
@@ -32,14 +32,25 @@ Dopo la prima consegna, Giovanni ha chiesto tre correzioni, applicate tutte:
 
    Resta senza foto solo "Tovaglie e bandiere istituzionali": è un prodotto del fornitore tessile golf (Canepa & Campi), non di Ultima Displays, e non ho voluto usare una foto di bandiere pubblicitarie generiche perché mostrerebbe un prodotto diverso da quello che il cliente riceve davvero. Dettaglio completo di cosa è stato scelto e cosa scartato in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (interno, fuori dal repo pubblico).
 
+## Round 3 (stessa giornata, "con le immagini puoi fare di meglio")
+
+Giovanni ha guardato il risultato del Round 2 e ha chiesto di fare di meglio sulle immagini, proponendo due strade (crearle con AI dato che sono soggetti semplici, o modificare quelle Ultima Displays) e di curare di più l'impaginazione. Non ho un tool di generazione immagini fotorealistiche disponibile in questa sessione, quindi ho lavorato su un sistema misto, guardando ogni foto già raccolta con occhio critico:
+
+- Delle 7 foto Ultima Displays del Round 2, solo 3 erano davvero pulite e adatte a un pubblico B2B golf formale (nessun modello, nessun tono fuori registro): fondali (Hop-Up Impact, un aereo di carta stilizzato), gazebo, gonfiabili (arco Bora). Le altre 4 (banchetto, segnaletica, roll up, totem) mostravano modelle in posa fashion/lifestyle o un cactus con occhiali da sole: non violavano la regola di anonimizzazione, ma non erano il tono giusto per circoli, sponsor e agenzie eventi.
+- Le 3 foto buone sono state trattate con un **duotone navy/cream** (script Python/PIL, colorize su base in scala di grigi, stessi colori brand `#1C1F2A`/`#F8F7F2`), per portarle dentro la palette 2promo invece di lasciarle come scatti da catalogo fornitore generico.
+- Per gli altri 6 slot (i 4 sostituiti più i 2 che non avevano mai avuto una foto: Kit Green e "Tovaglie e bandiere istituzionali") ho disegnato **6 icone originali da zero**, in un componente riusabile `GolfIcon.astro`: SVG lineari, stroke navy/cream, un accento arancio per elemento, coerenti tra loro e con le foto duotonate.
+- Impaginazione: card di kit e catalogo ora tutte con lo stesso trattamento (tile `aspect-[4/3]`, sfondo alternato cream chiaro/navy per ritmo visivo, foto o icona centrata), stessa logica già usata in `Categories.astro` sul resto del sito. Ho aggiunto un badge con l'icona anche in cima alle 3 pagine di dettaglio kit, per coerenza tra lista e dettaglio.
+
+Risultato: nessuna card senza un visual (anche Kit Green e le tovaglie, prima vuote, ora hanno un'icona), tono uniforme su tutta la sezione, nessun asset che deriva da un file del fornitore (le icone sono disegni originali, non ricalchi). Dettaglio di ogni scelta, comprese le 4 foto scartate in questo round e perché, in `mapping-prodotti.md`.
+
 ## Lighthouse (build di produzione, locale)
 
 | Pagina | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
-| `/golf/` | 98 | 96 | 96 | 69* |
-| `/golf/kit-gara/` | 100 | 96 | 96 | 69* |
+| `/golf/` | 95 | 96 | 96 | 69* |
+| `/golf/kit-gara/` | 97 | 96 | 96 | 69* |
 
-Target brief: Performance ≥90, A11y ≥95, entrambi raggiunti. Ricontrollato dopo le modifiche del Round 2 (nuove immagini, markup kit card): punteggi invariati.
+Target brief: Performance ≥90, A11y ≥95, entrambi raggiunti. Ricontrollato dopo le modifiche del Round 2 e del Round 3 (nuove immagini, icone, markup kit card): punteggi stabili, piccola oscillazione naturale dovuta al peso aggiuntivo delle foto (compensata dal lazy loading già in uso).
 
 \* SEO 69 è interamente dovuto al `noindex` intenzionale (richiesto dal brief §8, "robots noindex iniziale fino a review"): Lighthouse penalizza qualunque pagina non indicizzabile. Il punteggio sale a piena scala quando si rimuove `noindex` per il lancio pubblico.
 

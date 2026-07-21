@@ -1,13 +1,18 @@
 ---
 // Catalogo completo gara: fuori dai 3 kit, CTA a preventivo classico.
-// Foto prodotto anonimizzate dal catalogo fornitore (vedi verticale-golf/mapping-prodotti.md).
+// Dove esiste una foto prodotto anonimizzata pulita (fondali, gazebo, gonfiabili) la usiamo,
+// trattata in duotone navy/cream per stare nella stessa palette delle icone. Per gli item senza
+// foto disponibile (banchetti, segnaletica, tovaglie/bandiere) usiamo un'icona originale disegnata
+// da zero (GolfIcon.astro), mai una foto fornitore riadattata. Dettaglio in verticale-golf/mapping-prodotti.md.
+import GolfIcon from './GolfIcon.astro';
+
 const items = [
-  { name: 'Fondali premiazione e media wall', image: '/golf/products/fondale-premiazione.webp' },
-  { name: 'Gazebo hospitality', image: '/golf/products/gazebo-hospitality.webp' },
-  { name: 'Banchetti segreteria', image: '/golf/products/banchetto-segreteria.webp' },
-  { name: 'Segnaletica percorso', image: '/golf/products/segnaletica-percorso.webp' },
-  { name: 'Gonfiabili', image: '/golf/products/gonfiabile-arco.webp' },
-  { name: 'Tovaglie e bandiere istituzionali', image: null },
+  { name: 'Fondali premiazione e media wall', type: 'photo', image: '/golf/products/fondale-premiazione.webp' },
+  { name: 'Gazebo hospitality', type: 'photo', image: '/golf/products/gazebo-hospitality.webp' },
+  { name: 'Banchetti segreteria', type: 'icon', icon: 'banchetto', tile: 'bg-orange-pale' },
+  { name: 'Segnaletica percorso', type: 'icon', icon: 'segnaletica', tile: 'bg-orange-pale' },
+  { name: 'Gonfiabili', type: 'photo', image: '/golf/products/gonfiabile-arco.webp' },
+  { name: 'Tovaglie e bandiere istituzionali', type: 'icon', icon: 'tovaglia', tile: 'bg-orange-pale' },
 ];
 ---
 <section id="catalogo" class="bg-cream py-24 md:py-28 border-t border-ink/10">
@@ -24,13 +29,15 @@ const items = [
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mb-14">
       {items.map((item) => (
         <div class="bg-white border-2 border-ink/10 rounded-2xl overflow-hidden" data-reveal>
-          <div class="aspect-[4/3] bg-gray-light flex items-center justify-center">
-            {item.image ? (
+          {item.type === 'photo' ? (
+            <div class="aspect-[4/3] bg-gray-light">
               <img src={item.image} alt={item.name} class="w-full h-full object-cover" width="600" height="450" loading="lazy" />
-            ) : (
-              <span class="text-ink/30 text-xs uppercase tracking-wide px-4 text-center">Foto in arrivo</span>
-            )}
-          </div>
+            </div>
+          ) : (
+            <div class={`aspect-[4/3] ${item.tile} flex items-center justify-center`}>
+              <GolfIcon name={item.icon} class="w-16 h-16 md:w-20 md:h-20 text-ink" />
+            </div>
+          )}
           <div class="p-4">
             <p class="font-display text-sm text-ink leading-snug">{item.name}</p>
           </div>

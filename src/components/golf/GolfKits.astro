@@ -1,5 +1,6 @@
 ---
 import { GOLF_KITS, CTA_RICHIEDI_PREZZO } from '../../data/golf-kits';
+import GolfIcon from './GolfIcon.astro';
 ---
 <section id="kit" class="bg-cream py-24 md:py-28">
   <div class="max-w-6xl mx-auto px-6">
@@ -15,15 +16,9 @@ import { GOLF_KITS, CTA_RICHIEDI_PREZZO } from '../../data/golf-kits';
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {GOLF_KITS.map((kit) => (
         <div class="flex flex-col bg-white border-2 border-ink/10 rounded-2xl overflow-hidden hover:border-orange transition" data-reveal>
-          {kit.image ? (
-            <div class="aspect-[4/3] bg-gray-light">
-              <img src={kit.image} alt={kit.name} class="w-full h-full object-cover" width="600" height="450" loading="lazy" />
-            </div>
-          ) : (
-            <div class="aspect-[4/3] bg-gray-light flex items-center justify-center">
-              <span class="text-ink/30 text-xs uppercase tracking-wide px-4 text-center">Foto in arrivo</span>
-            </div>
-          )}
+          <div class={`aspect-[4/3] ${kit.tile} flex items-center justify-center`}>
+            <GolfIcon name={kit.icon} class={`w-20 h-20 md:w-24 md:h-24 ${kit.tile === 'bg-navy' ? 'text-cream' : 'text-ink'}`} />
+          </div>
           <div class="flex flex-col flex-1 p-8">
             <span class="eyebrow text-orange mb-4">{kit.eyebrow}</span>
             <h3 class="font-display text-2xl text-ink mb-3 leading-tight">{kit.name}</h3>
