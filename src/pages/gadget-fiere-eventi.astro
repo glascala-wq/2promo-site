@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'La nostra fiera è tra poche settimane, facciamo in tempo?',
+    a: 'Dipende da cosa serve. Sul catalogo standard, la consegna parte da 2-3 giorni lavorativi dalla conferma: spesso si riesce anche a ridosso della data. Sulla linea custom (lanyard, borse, capi su misura) servono 12-15 giorni di produzione: prima si manda il brief, più margine c’è. Su richiesta valutiamo consegne express per le scadenze più strette, ma prima scriveteci con la data della fiera, meglio è.',
+    open: true,
+  },
+  {
+    q: 'Che quantità dobbiamo ordinare per uno stand fieristico?',
+    a: 'Non c’è una regola unica: dipende da quanti giorni dura la fiera, dal traffico atteso e da cosa distribuite. Sul catalogo standard si parte anche da pochi pezzi campione; sulla linea custom i minimi variano per famiglia — lanyard e borse da 100 pezzi, abbigliamento da 10. Ditecelo nel brief e vi aiutiamo a stimare la quantità giusta per non restare a corto a metà fiera né con scatoloni pieni al rientro.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gadget Fiere ed Eventi Personalizzati | 2promo.it"
+  description="Gadget fiere ed eventi personalizzati per lo stand: lanyard, borse, penne, gadget tech. Custom in 12-15gg: pianificate per tempo. Preventivo gratuito."
+>
+  <Breadcrumbs items={[{ name: 'Gadget fiere ed eventi', url: '/gadget-fiere-eventi' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— gadget per fiere ed eventi</span>
+      </div>
+      <h1 class="font-display-tight text-[8vw] md:text-[4vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Gadget per fiere ed eventi personalizzati, pronti prima che apra lo stand.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        Organizzare uno stand — che sia al Salone Nautico di Genova, la grande fiera che ogni ligure conosce, o alla rassegna di settore più piccola — vuol dire mettere in fila decine di cose entro una data che non si sposta. 2promo.it è il reparto gadget aziendali di JAS Srl, con sede ad Arenzano (Genova), attivo dal 2014: catalogo di 30.000+ articoli promozionali personalizzabili col vostro logo e linea custom su misura, per chi allestisce uno stand in qualunque fiera o evento, in Liguria come nel resto d'Italia.
+      </p>
+    </div>
+  </header>
+
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Cosa serve davvero per una fiera</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Uno stand non è solo un banco e un roll-up. Serve materiale per lo staff — cordini badge, polo o t-shirt riconoscibili, borracce da tenere sotto al banco per le lunghe giornate in piedi — e serve materiale da mettere in mano ai visitatori: qualcosa che si portano via e che, tornati a casa, ricorda il vostro brand invece di finire nel primo cestino del padiglione.</p>
+          <p>Due esigenze diverse, due famiglie di prodotto diverse. Per lo staff, capi e accessori con marchio coerente su tutta la linea. Per i visitatori, oggetti d'impatto immediato, comodi da distribuire in quantità: quelli che si notano al primo sguardo, non il solito gadget triste lasciato sul tavolo a fine giornata.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">La checklist temporale, onesta</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Che la fiera sia il Salone Nautico di Genova o una rassegna di settore più piccola, il principio è lo stesso: chi organizza uno stand ha una data fissa, non negoziabile. Il gadget deve essere pronto e spedito prima, non "circa in tempo".</p>
+          <p>Sul catalogo standard la consegna parte da 2-3 giorni lavorativi dalla conferma, tempo esatto secondo prodotto e quantità: utile per completare all'ultimo un ordine o aggiungere pezzi. Sulla <a href="/custom" class="text-orange underline">linea custom</a> — quella dei lanyard con Pantone esatto, delle borse in cotone integrali, dei capi stampati edge-to-edge — la produzione richiede 12-15 giorni lavorativi. Vuol dire una cosa sola: se la fiera è tra tre settimane, il brief per il custom va inviato adesso, non la settimana prima dell'allestimento. Su richiesta organizziamo consegne express per le scadenze più strette, ma pianificare con anticipo resta la strada più tranquilla.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">I prodotti giusti per lo stand</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Lanyard e cordini badge: sulla linea custom partono da 100 pezzi, con Pantone esatto e stampa fronte/retro — lo strumento più visto in assoluto, perché lo staff lo indossa dalla mattina alla sera. Borse e shopper: per il materiale informativo che i visitatori si portano via, in cotone o in RPET su richiesta, da 100 pezzi in versione custom o in decine di varianti sul catalogo standard.</p>
+          <p>Penne: il gadget da fiera per eccellenza, quello che finisce in tasca senza pensarci ed è la ripetizione a costo più basso del vostro logo nei giorni successivi all'evento. Gadget tech — power bank, chiavette USB, accessori da scrivania — per chi al vostro stand si ferma davvero e si aspetta qualcosa di più di una penna. Su tutto: serigrafia, tampografia, transfer digitale, incisione laser o ricamo, secondo materiale ed effetto.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-xl mx-auto">Diteci quando è la fiera, ci pensiamo noi al resto.</p>
+        <a
+          href="/preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo per lo Stand →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Faq items={faqItems} eyebrow="domande su fiere ed eventi" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>

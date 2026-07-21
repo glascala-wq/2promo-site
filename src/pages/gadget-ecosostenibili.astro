@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'Come richiedo la certificazione per un articolo specifico?',
+    a: 'Ci scrivete quale articolo vi interessa e quale certificazione vi serve (OEKO-TEX, GRS, Fairtrade, EU Ecolabel, Amfori, Sedex, OCS, RCS, REACH o BSCI). Vi confermiamo se è disponibile su quel prodotto e la includiamo nel preventivo, insieme alla bozza pre-stampa gratuita.',
+    open: true,
+  },
+  {
+    q: 'I materiali ecosostenibili sono disponibili anche sulla linea custom?',
+    a: 'Sì. RPET, bambù, sughero e cotone biologico si possono usare anche sui progetti custom su misura — abbigliamento da 10 pezzi, shopper da 100, lanyard da 100, calzini full-jacquard da 50 — con Pantone esatto e stampa edge-to-edge dove il materiale lo consente.',
+  },
+  {
+    q: 'Un gadget plastic free con logo costa e richiede tempi diversi da uno standard?',
+    a: 'Dipende dall’articolo e dalla certificazione richiesta, per questo lavoriamo a preventivo su misura. I tempi restano quelli abituali: consegna standard a partire da 2-3 giorni lavorativi dalla conferma, linea custom 12-15 giorni, express su richiesta per le scadenze urgenti.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gadget Aziendali Ecosostenibili con Logo | 2promo.it"
+  description="Gadget aziendali ecosostenibili con logo: RPET, bambù, sughero, cotone bio. Certificazioni su richiesta (OEKO-TEX, GRS, Fairtrade...). Preventivo gratuito."
+>
+  <Breadcrumbs items={[{ name: 'Gadget ecosostenibili', url: '/gadget-ecosostenibili' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— gadget plastic free</span>
+      </div>
+      <h1 class="font-display-tight text-[8vw] md:text-[4vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Gadget aziendali ecosostenibili: plastic free, con il vostro logo
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        RPET, bambù, sughero, cotone biologico. Certificazioni vere — OEKO-TEX, GRS, Fairtrade, EU Ecolabel, Amfori, Sedex, OCS, RCS, REACH, BSCI — fornite su richiesta per l'articolo che vi serve, non spalmate su tutto il catalogo per fare colpo. Un gadget aziendale ecosostenibile con logo non deve essere un atto di fede: deve essere un materiale tracciabile, una certificazione verificabile e un fornitore che ve la sa spiegare senza girarci intorno. Qui sotto trovate esattamente questo.
+      </p>
+    </div>
+  </header>
+
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Perché la sostenibilità non è più un extra</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Fino a qualche anno fa il gadget ecosostenibile era un vezzo per pochi. Oggi è quasi un prerequisito: sempre più aziende devono rendere conto delle proprie scelte in ottica ESG, sempre più bandi e capitolati chiedono fornitori e materiali tracciabili, e sempre più persone — clienti, dipendenti, partner — guardano cosa c'è dietro un oggetto con un logo sopra prima ancora di guardare il logo stesso.</p>
+          <p>Un gadget aziendale finisce nelle mani di chi lo riceve. Se quella penna, quella borsa o quella power bank comunicano attenzione reale — materiali, filiera, certificazioni — il brand che le ha regalate ne esce meglio. Se comunicano il contrario, anche. Non serve inventarsi statistiche per capirlo: basta chiedersi che impressione lascia un regalo aziendale, e quanto quell'impressione parla dell'azienda che lo ha scelto.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">I materiali: RPET, bambù, sughero, cotone biologico</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Nel nostro catalogo trovate una selezione ampia di articoli realizzati con materiali a basso impatto. Ecco cosa sono, in breve, senza tecnicismi inutili.</p>
+          <p><strong class="text-ink">RPET</strong> è poliestere riciclato, ottenuto principalmente da bottiglie in plastica raccolte e rilavorate: si usa per borse, zaini, tessuti tecnici e articoli che nel catalogo standard sarebbero in plastica vergine o poliestere nuovo. <strong class="text-ink">Bambù</strong> è una pianta a crescita rapida che non richiede pesticidi per svilupparsi: diventa penne, taglieri, speaker e accessori da scrivania con una superficie naturale, mai uguale a se stessa. <strong class="text-ink">Sughero</strong> si ricava dalla corteccia della quercia da sughero, che si rigenera senza che l'albero venga abbattuto: perfetto per portafogli, custodie, borse e dettagli a contatto con la pelle. <strong class="text-ink">Cotone biologico</strong> è cotone coltivato senza pesticidi né fertilizzanti chimici di sintesi: lo trovate su shopper, t-shirt e borse dove il cotone convenzionale è la norma.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Le certificazioni, spiegate senza gergo</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Le certificazioni sono la parte che confonde di più, perché le sigle sembrano tutte uguali e nessuno le spiega davvero. Le riportiamo qui una per una, così sapete cosa state chiedendo prima di chiederlo.</p>
+          <p><strong class="text-ink">OEKO-TEX Standard 100</strong>: certifica che il tessuto è stato testato per l'assenza di sostanze nocive per la salute — utile su qualsiasi articolo che tocca la pelle. <strong class="text-ink">GRS (Global Recycle Standard)</strong>: traccia il materiale riciclato lungo tutta la filiera, dalla materia prima al prodotto finito, verificando che la percentuale dichiarata sia reale. <strong class="text-ink">Fairtrade</strong>: garantisce condizioni di commercio equo per i produttori della materia prima, con prezzi minimi tutelati e standard sociali definiti. <strong class="text-ink">EU Ecolabel</strong>: è il marchio ecologico ufficiale dell'Unione Europea, assegnato a prodotti che rispettano criteri ambientali stringenti lungo l'intero ciclo di vita. <strong class="text-ink">Amfori</strong> e <strong class="text-ink">Sedex</strong>: sono piattaforme di audit etico che verificano le condizioni di lavoro e la conformità sociale lungo la filiera produttiva. <strong class="text-ink">OCS (Organic Content Standard)</strong>: certifica la percentuale reale di contenuto organico presente in un materiale, come il cotone biologico. <strong class="text-ink">RCS (Recycled Claim Standard)</strong>: certifica la percentuale reale di contenuto riciclato in un materiale o prodotto. <strong class="text-ink">REACH</strong>: è il regolamento europeo sulla conformità chimica dei prodotti immessi sul mercato UE. <strong class="text-ink">BSCI</strong>: è uno standard di responsabilità sociale che monitora le condizioni etiche lungo la catena di fornitura.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Come funziona, in pratica</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Fornire tutte le certificazioni su tutti i 30.000+ articoli del catalogo, sempre, non avrebbe senso: ogni fornitore, ogni materiale, ogni lotto ha le sue. Per questo lavoriamo su richiesta, articolo per articolo: ci dite cosa vi serve dimostrare — magari per un bando, un capitolato interno o semplicemente per stare tranquilli — e vi confermiamo quali certificazioni sono disponibili su quel prodotto specifico.</p>
+          <p>Vale sia per il catalogo standard che per la <a href="/custom" class="text-orange underline">linea custom</a>, dove materiali come RPET e cotone biologico si combinano con Pantone esatto e stampa edge-to-edge. In entrambi i casi, prima di qualsiasi pagamento arriva la bozza pre-stampa: sempre gratuita, inclusa nel preventivo, senza impegno.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-xl mx-auto">Ditemi cosa vi serve dimostrare.</p>
+        <a
+          href="/preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Faq items={faqItems} eyebrow="domande sulla sostenibilità" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>

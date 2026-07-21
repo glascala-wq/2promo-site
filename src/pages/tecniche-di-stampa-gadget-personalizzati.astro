@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'Come si sceglie la tecnica di stampa giusta per un gadget personalizzato?',
+    a: 'Dipende da materiale dell’oggetto, forma, numero di colori del logo e quantità dell’ordine. Non serve arrivare con le idee chiare: scrivete cosa vi serve, il nostro reparto tecnico valuta questi elementi e vi propone la tecnica più adatta, dentro il preventivo.',
+    open: true,
+  },
+  {
+    q: 'Serigrafia o incisione laser: che differenza c’è?',
+    a: 'La serigrafia deposita inchiostro colorato sulla superficie ed è tipica su plastica, metallo verniciato e tessuto per grandi quantità. L’incisione laser non usa inchiostro: incide il logo nel materiale stesso, tipicamente su metallo o legno, con un risultato monocromatico e molto resistente all’usura. Si scelgono in base al materiale e all’effetto desiderato, non sono intercambiabili sullo stesso articolo.',
+  },
+  {
+    q: 'Chi decide quale tecnica di stampa usare, io o voi?',
+    a: 'Ve la consigliamo noi. Voi ci dite l’articolo, il logo e la quantità; il nostro reparto tecnico individua la tecnica più adatta e ve la mostra nella bozza pre-stampa, sempre gratuita e senza impegno, prima che paghiate qualsiasi cosa.',
+  },
+];
+---
+
+<BaseLayout
+  title="Tecniche di Stampa per Gadget Personalizzati | 2promo.it"
+  description="Tecniche di stampa per gadget personalizzati: serigrafia, tampografia, transfer digitale, incisione laser, ricamo spiegati. Preventivo gratuito."
+>
+  <Breadcrumbs items={[{ name: 'Tecniche di stampa', url: '/tecniche-di-stampa-gadget-personalizzati' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— guida alle tecniche di stampa</span>
+      </div>
+      <h1 class="font-display-tight text-[8vw] md:text-[4vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Tecniche di stampa per gadget personalizzati: quale scegliere
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        Serigrafia, tampografia, transfer digitale, incisione laser, ricamo: cinque nomi che sentite spesso e che, diciamocelo, fanno tutti un po' lo stesso rumore se non è il vostro mestiere. Ognuna di queste tecniche di stampa per gadget personalizzati funziona meglio su materiali diversi e dà un risultato diverso — capire le differenze, tipo serigrafia o incisione laser, aiuta a capire cosa aspettarsi dal vostro gadget. Ma tranquilli: non dovete diventare esperti di stampa per ordinare un gadget aziendale. Qui sotto trovate come funziona ciascuna tecnica, in parole semplici; poi, quando ci scrivete cosa vi serve, la scelta finale la facciamo con voi.
+      </p>
+    </div>
+  </header>
+
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Serigrafia: la classica, per grandi numeri</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>La serigrafia stampa il colore attraverso un telaio, uno strato alla volta. È la tecnica più diffusa per personalizzare oggetti con superfici piatte o leggermente curve — penne, borracce, shopper, felpe — e rende bene sia con un logo a un colore che con più colori sovrapposti.</p>
+          <p>È la scelta giusta quando le quantità sono alte: più pezzi si stampano, più il costo per singolo articolo si abbassa, ed è per questo che resta la tecnica più usata nel merchandising aziendale su grandi lotti. Il risultato è un colore pieno, coprente, che tiene bene nel tempo su materiali come plastica, metallo verniciato e tessuto.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Tampografia: precisione su superfici difficili</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>La tampografia usa un tampone in silicone che preleva l'inchiostro e lo trasferisce sull'oggetto, anche su forme curve, incavate o irregolari dove la serigrafia non arriva comodamente — penne, accendini, gadget in plastica dalla geometria complessa, piccoli oggetti promozionali.</p>
+          <p>È la tecnica giusta quando la forma dell'articolo è il problema: superfici piccole, cilindriche o con rilievi. Il risultato è un dettaglio netto anche su loghi piccoli, con un limite fisiologico nel numero di colori gestibili in un solo passaggio.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Transfer digitale: colori pieni, nessun limite cromatico</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Il transfer digitale stampa l'immagine su un supporto e poi la trasferisce a caldo sull'oggetto, spesso su tessuto. A differenza della serigrafia non ha limiti pratici sul numero di colori: sfumature, foto, loghi multicolore complessi vengono riprodotti senza dover preparare un telaio per ogni tinta.</p>
+          <p>È la scelta giusta quando il logo o la grafica hanno molti colori o dettagli fini, e le quantità non sono così alte da giustificare i costi di preparazione della serigrafia. Il risultato è fedele all'originale, anche su grafiche articolate.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Incisione laser: il segno che non si stacca</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>L'incisione laser non deposita inchiostro: rimuove o brucia una sottilissima parte di materiale, incidendo il logo direttamente nella superficie. Per questo è la tecnica tipica su metallo, legno, pelle e alcune plastiche rigide — power bank, penne metalliche, accessori in legno, taglieri.</p>
+          <p>È la scelta giusta quando serve un risultato elegante, monocromatico per natura (il colore è quello del materiale sottostante) e resistente all'usura, perché non essendoci inchiostro non c'è nulla che possa scrostarsi o sbiadire nel tempo.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Ricamo: la texture che dice "qualità"</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Il ricamo costruisce il logo con il filo, punto dopo punto, direttamente nel tessuto. È la tecnica standard per capi di abbigliamento, cappellini e accessori tessili dove si vuole un effetto tridimensionale e un tocco più curato rispetto alla stampa piatta.</p>
+          <p>È la scelta giusta su polo, felpe, cappellini e borse in tessuto robusto, soprattutto quando il capo è destinato a un uso prolungato: il ricamo regge bene i lavaggi e il tempo meglio di molte stampe. Il limite è sui dettagli finissimi, dove il filo non riesce a scendere sotto una certa dimensione minima.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">La tecnica giusta? Non dovete deciderla voi</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Cinque tecniche, cinque logiche diverse — materiale, forma dell'oggetto, numero di colori, quantità, uso previsto. Difficile scegliere alla cieca, ed è normale non saperlo: non è il vostro mestiere, è il nostro.</p>
+          <p>Quando ci scrivete cosa vi serve, è il nostro reparto tecnico a indicarvi la tecnica più adatta per quell'articolo, quel logo e quella quantità — non dovete arrivare già con la risposta pronta. E prima di qualsiasi produzione, vedete comunque una bozza pre-stampa: sempre gratuita, inclusa nel preventivo, senza impegno.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-xl mx-auto">Raccontateci l'articolo e il logo: vi diciamo noi la tecnica giusta.</p>
+        <a
+          href="/preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Faq items={faqItems} eyebrow="domande sulle tecniche di stampa" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>

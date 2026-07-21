@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'Quanto tempo prima di Natale devo ordinare i regali aziendali personalizzati?',
+    a: 'Dipende da cosa scegliete. Sul catalogo standard la produzione parte da 2-3 giorni lavorativi dalla conferma della bozza. Sulla linea custom servono 12-15 giorni di produzione, più il tempo per brief e approvazione della bozza pre-stampa: per un regalo custom pronto prima delle feste, meglio muoversi con alcune settimane di margine invece che a inizio dicembre. Per le scadenze già strette, su richiesta valutiamo consegne express.',
+    open: true,
+  },
+  {
+    q: 'Qual è l’ordine minimo per i regali aziendali di Natale su misura (linea custom)?',
+    a: 'Varia per categoria: abbigliamento personalizzato da 10 pezzi, shopper in cotone da 100 pezzi, lanyard da 100 pezzi, calzini full-jacquard da 50 pezzi. Sul catalogo standard, invece, si parte anche da un singolo pezzo campione su molti articoli.',
+  },
+  {
+    q: 'Posso vedere una bozza prima di confermare il regalo di Natale personalizzato?',
+    a: 'Sempre. La bozza pre-stampa è gratuita, inclusa nel preventivo, e la vedete prima di qualsiasi pagamento, senza impegno. Per ordini custom sopra i 500 pezzi realizziamo anche un prototipo fisico; sotto i 500, bozza digitale più campione del materiale.',
+  },
+];
+---
+
+<BaseLayout
+  title="Regali Aziendali di Natale Personalizzati 2026"
+  description="Regali aziendali di Natale personalizzati con il vostro logo, per clienti e dipendenti: catalogo e linea custom. Bozza gratuita, richiedete il preventivo."
+>
+  <Breadcrumbs items={[{ name: 'Regali aziendali Natale', url: '/regali-aziendali-natale' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— regali di natale 2026</span>
+      </div>
+      <h1 class="font-display-tight text-[8vw] md:text-[4vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Regali aziendali di Natale personalizzati, per chi non si riduce all'ultimo minuto.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        A dicembre tutti mandano qualcosa. La differenza la fa cosa mandate e quanto ci avete pensato. Per i regali aziendali di Natale personalizzati lavoriamo su due binari: il catalogo, oltre 30.000 articoli pronti per il vostro logo, e la linea custom, per chi vuole un regalo che non si trova già pronto da nessuna parte. In entrambi i casi, bozza gratuita prima di ogni conferma. L'unica cosa che non possiamo personalizzare è il calendario: dicembre arriva sempre alla stessa data, e più tardi partite, meno margine avete.
+      </p>
+    </div>
+  </header>
+
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Il regalo di Natale aziendale non è un adempimento, è un messaggio</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Al cliente dice "vi abbiamo pensati", non "abbiamo un budget marketing da smaltire entro il 31 dicembre". Al dipendente dice qualcosa di simile, con un peso diverso: è uno dei pochi momenti dell'anno in cui l'azienda si presenta senza email di mezzo. Il gadget triste, comprato all'ultimo e stampato senza cura, si vede. E si ricorda, ma non nel senso buono.</p>
+          <p>Sul fronte clienti lavoriamo bene sia con il catalogo standard sia con la <a href="/custom" class="text-orange underline">linea custom</a>: nel primo caso personalizziamo il vostro logo con la tecnica più adatta al prodotto — serigrafia, tampografia, transfer digitale, incisione laser, ricamo, decide il nostro reparto tecnico caso per caso. Nel secondo, per chi vuole un regalo davvero riconoscibile, lavoriamo con Pantone esatto e stampa edge-to-edge su tutta la superficie del prodotto, non solo nella zona di stampa classica.</p>
+          <p>Sul fronte dipendenti il discorso cambia poco: zaini, borracce, power bank e <a href="/welcome-kit-aziendali" class="text-orange underline">kit multi-prodotto</a> restano tra le scelte più richieste per un regalo che si usa davvero, non che finisce in un cassetto il 27 dicembre.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Fascia entry, fascia premium: due modi di dire "grazie", non due livelli di attenzione</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Non vi diciamo cifre, perché dipendono da prodotto, quantità e personalizzazione, e un numero buttato lì senza contesto è solo marketing. Vi diciamo però che tipo di prodotto trovate in ciascuna fascia, così potete ragionare per obiettivo prima ancora che per preventivo.</p>
+          <p><strong class="text-ink">Fascia entry:</strong> articoli del catalogo standard, personalizzati con il vostro logo, pensati per grandi numeri e distribuzione ampia — biglietti d'auguri, articoli da scrivania, accessori piccoli, drinkware base. Utili quando dovete coprire una lista lunga senza perdere in qualità della stampa.</p>
+          <p><strong class="text-ink">Fascia premium:</strong> prodotti della linea custom o articoli selezionati del catalogo con materiali e finiture superiori — capi in tessuto con Pantone esatto, prodotti in RPET, bambù, sughero o cotone biologico, con certificazioni di sostenibilità (OEKO-TEX, GRS, Fairtrade, EU Ecolabel, Amfori, Sedex, OCS, RCS, REACH, BSCI) disponibili su richiesta per articolo. Utile quando la lista è più corta ma il messaggio deve pesare di più — clienti chiave, dirigenza, partner storici.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Il tempismo: fate i conti alla rovescia adesso, non a dicembre</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Ve la raccontiamo con i numeri veri, non con una data limite inventata per farvi correre. Sul catalogo standard la produzione parte da 2-3 giorni lavorativi dalla conferma: comodo, ma "comodo" non vuol dire "senza pensarci" — anche qui c'è una bozza da approvare prima, e più aspettate più quel margine si consuma.</p>
+          <p>Sulla linea custom il conto è diverso e va fatto per intero: 12-15 giorni di sola produzione, a cui si aggiunge il tempo per il brief iniziale e per l'approvazione della bozza pre-stampa (sempre gratuita, ma è comunque un passaggio con dei giorni suoi, specie se servono revisioni). Messi in fila, per un regalo custom che deve essere pronto prima delle feste conviene partire con settimane di anticipo, non con la corsa a inizio dicembre: è aritmetica di produzione, non urgenza da vetrina.</p>
+          <p>Se siete già in ritardo, prima di rassegnarvi scriveteci: per le scadenze davvero strette organizziamo consegne express su richiesta. Non è la norma, ma è un'opzione reale, non una promessa vaga.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="text-ink/80 leading-relaxed mb-6 max-w-2xl mx-auto">Il calendario di dicembre non aspetta, ma qui non ve lo vendiamo come un countdown finto: 12-15 giorni di produzione custom più il tempo per bozza e approvazione sono numeri reali, non un trucco per farvi affrettare. Fateceli fruttare.</p>
+        <a
+          href="/preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Faq items={faqItems} eyebrow="domande sui regali di natale" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>
