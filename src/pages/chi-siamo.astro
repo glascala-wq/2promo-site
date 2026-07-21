@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Trust from '../components/Trust.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'Chi c’è dietro 2promo.it?',
+    a: '2promo.it è il marchio con cui JAS Srl (P.IVA IT02278140997, REA GE-474160) opera nel settore dei gadget aziendali personalizzati. Sede ad Arenzano, provincia di Genova.',
+    open: true,
+  },
+  {
+    q: 'Da quanto tempo lavorate nei gadget aziendali personalizzati?',
+    a: 'Dal 2014. Da allora abbiamo costruito un catalogo di oltre 30.000 articoli personalizzabili e una linea custom su misura, lavorando con aziende in tutta Italia.',
+  },
+  {
+    q: 'Siete associati a qualcosa di riconosciuto nel settore?',
+    a: 'Siamo membri ASSOPROM, l’Associazione Italiana Produttori e Distributori di Articoli Pubblicitari e Promozionali. Sui singoli articoli forniamo su richiesta certificazioni di sostenibilità come OEKO-TEX, GRS, Fairtrade, EU Ecolabel, Amfori, Sedex, OCS, RCS, REACH, BSCI.',
+  },
+  {
+    q: 'Devo pagare per vedere come sarà il mio gadget personalizzato?',
+    a: 'No. La bozza pre-stampa è sempre gratuita, inclusa nel preventivo, senza impegno. La vedete prima di pagare qualsiasi cosa. Mai mockup dopo il pagamento.',
+  },
+];
+---
+
+<BaseLayout
+  title="Chi Siamo: Gadget Aziendali dal 2014 | 2promo.it"
+  description="2promo.it è il reparto gadget aziendali personalizzati di JAS Srl, dal 2014. Sede ad Arenzano, membri ASSOPROM. Bozza gratuita, mai mockup dopo pagamento."
+>
+  <Breadcrumbs items={[{ name: 'Chi siamo', url: '/chi-siamo' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <!-- Hero compatto -->
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— chi siamo</span>
+      </div>
+      <h1 class="font-display-tight text-[9vw] md:text-[4.5vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Gadget aziendali personalizzati, dal 2014.<br>Senza scorciatoie.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        2promo.it è il marchio di JAS Srl dedicato ai gadget aziendali personalizzati: un catalogo di oltre 30.000 articoli pronti per il vostro logo, più una linea custom per chi vuole qualcosa che non esiste ancora. Non siamo l'ultimo arrivato che promette tutto e consegna poco. Siamo qui dal 2014, con sede ad Arenzano, in Liguria, e un metodo che non cambia: prima vi facciamo vedere cosa costruiamo, poi decidete.
+      </p>
+    </div>
+  </header>
+
+  <!-- Body sections -->
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Chi siamo davvero</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>JAS Srl, P.IVA IT02278140997, REA GE-474160. 2promo.it è il nome con cui lavoriamo i gadget aziendali personalizzati: dalla penna con logo al kit di benvenuto multi-prodotto, dal singolo campione alla commessa da migliaia di pezzi.</p>
+          <p>Sede ad <a href="/gadget-personalizzati-genova" class="text-orange underline">Arenzano, provincia di Genova</a>. Da qui coordiniamo un catalogo di oltre 30.000 articoli promozionali personalizzabili e una linea custom su misura per chi ha bisogno di qualcosa che il catalogo non copre. Lavoriamo con aziende di tutta Italia — resto d'Europa su richiesta — e siamo membri di <strong class="text-ink">ASSOPROM</strong>, l'Associazione Italiana Produttori e Distributori di Articoli Pubblicitari e Promozionali. Non è un'etichetta decorativa: è l'associazione di categoria di chi fa questo mestiere sul serio.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Catalogo e linea custom: due strade, un solo standard</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Con il catalogo standard personalizziamo oltre 30.000 articoli con il vostro logo: serigrafia, tampografia, transfer digitale, incisione laser, ricamo — la tecnica giusta la sceglie il nostro reparto tecnico in base a materiale, colori Pantone ed effetto desiderato.</p>
+          <p>Quando il catalogo non basta, c'è la <a href="/custom" class="text-orange underline">linea custom</a>: abbigliamento da 10 pezzi, shopper in cotone da 100, lanyard per eventi da 100, calzini full-jacquard da 50. Pantone esatto, stampa su tutta la superficie dove il materiale lo consente. Non prodotti presi da un listino: prodotti costruiti insieme a voi.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Sostenibilità, non uno slogan</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Su richiesta, per articolo, forniamo le certificazioni di sostenibilità: OEKO-TEX, GRS, Fairtrade, EU Ecolabel, Amfori, Sedex, OCS, RCS, REACH, BSCI. Buona parte del catalogo è disponibile anche in materiali a basso impatto — RPET, bambù, cotone biologico — per chi vuole un gadget aziendale che rispecchi davvero i propri valori, certificati alla mano.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Chi si è fidato di noi</h2>
+        <div class="text-ink/70 leading-relaxed">
+          <p>Tra le aziende con cui abbiamo lavorato: Red Bull, Binance, MediaWorld, Monge, RDS, Radio Italia, SEA Milano, Wonderbox, EdiliziaAcrobatica, Prato Nevoso, AFRY, Capitaneria di Porto. Nomi diversi, settori diversi. Lo stesso metodo per tutti.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Come si lavora con noi</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Niente sorprese, niente mockup dopo il pagamento. Ci scrivete cosa vi serve, noi rispondiamo con un preventivo e una bozza pre-stampa: <strong class="text-ink">sempre gratuita</strong>, inclusa nel preventivo, prima di qualsiasi pagamento, senza impegno. Approvate la bozza, si parte con la produzione — non il contrario.</p>
+          <p>Consegna standard a partire da 2-3 giorni lavorativi dalla conferma, tempo esatto secondo prodotto e quantità; linea custom 12-15 giorni; consegne express su richiesta per le scadenze urgenti. Spediamo in tutta Italia, resto d'Europa su richiesta.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-xl mx-auto">Raccontateci il progetto: preventivo e bozza gratuita, senza impegno.</p>
+        <a
+          href="/preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <Trust variant="grid" />
+  <Faq items={faqItems} eyebrow="domande su di noi" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+
+const faqItems = [
+  {
+    q: 'Siete solo a Genova? Lavorate anche fuori Liguria?',
+    a: 'No, tutt’altro. La sede di JAS Srl è ad Arenzano (Genova), ma spediamo in tutta Italia con gli stessi tempi di consegna, a partire da 2-3 giorni lavorativi dalla conferma. Su richiesta, anche nel resto d’Europa.',
+    open: true,
+  },
+  {
+    q: 'Perché scegliere un’azienda con sede vicino a Genova invece di una piattaforma online qualsiasi?',
+    a: 'Perché siamo un’azienda vera, verificabile (partita IVA IT02278140997, REA GE-474160), membro ASSOPROM, e non un intermediario anonimo. Parlate direttamente con chi segue il vostro ordine, senza passaggi intermedi. Non promettiamo consegne più veloci per la vicinanza: i tempi standard sono gli stessi in tutta Italia.',
+  },
+  {
+    q: 'Posso vedere una bozza prima di pagare, anche ordinando da Genova?',
+    a: 'Sì, sempre, indipendentemente da dove ordinate. La bozza pre-stampa è gratuita, inclusa nel preventivo e arriva prima di qualsiasi pagamento. Approvate voi, poi partiamo con la produzione.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gadget Personalizzati Genova | 30.000+ Articoli - 2promo.it"
+  description="Gadget personalizzati a Genova: 30.000+ articoli con il vostro logo, linea custom da 10 pezzi. Azienda con sede ad Arenzano (GE). Preventivo gratuito."
+>
+  <Breadcrumbs items={[{ name: 'Gadget personalizzati Genova', url: '/gadget-personalizzati-genova' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="other" />
+
+  <!-- Hero compatto -->
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="w-8 h-px bg-orange"></span>
+        <span class="eyebrow text-orange">— gadget personalizzati a Genova</span>
+      </div>
+      <h1 class="font-display-tight text-[8vw] md:text-[4vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
+        Gadget personalizzati a Genova: 30.000+ articoli, un'azienda vera.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
+        Cercate gadget personalizzati a Genova o gadget aziendali in Liguria? 2promo.it è il reparto gadget aziendali di JAS Srl, con sede ad Arenzano (Genova), attivo dal 2014. Catalogo di 30.000+ articoli promozionali personalizzabili col vostro logo, linea custom su misura da 10 pezzi, spedizioni in tutta Italia. Nessuna promessa di consegne locali più rapide: solo un'azienda italiana verificabile con cui parlare direttamente, invece di un intermediario anonimo.
+      </p>
+    </div>
+  </header>
+
+  <!-- Body sections -->
+  <section class="bg-cream pb-16 md:pb-20">
+    <div class="max-w-4xl mx-auto px-6 space-y-14">
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Gadget aziendali con sede a Genova, non un intermediario anonimo</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>2promo.it è il reparto gadget aziendali di JAS Srl, con sede ad Arenzano, in provincia di Genova. Non siamo una piattaforma che smista ordini a chissà chi: siamo un'azienda italiana verificabile, con partita IVA e REA depositati, che risponde su WhatsApp e via email con persone vere, non con un modulo anonimo.</p>
+          <p>Per chi cerca gadget personalizzati partendo da Genova o dalla Liguria, questo significa una cosa concreta: parlate direttamente con chi segue la produzione, senza passaggi intermedi prima di arrivare a chi decide. Meno rimbalzi, meno equivoci sul Pantone, meno sorprese sulla bozza.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Cosa trovate nel catalogo</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>30.000+ articoli promozionali personalizzabili col vostro logo: penne, borracce, zaini, batterie portatili, kit di benvenuto per dipendenti, regali aziendali. Tecniche di stampa serigrafia, tampografia, transfer digitale, incisione laser, ricamo, scelte in base al materiale e all'effetto che cercate.</p>
+          <p>Per progetti su misura c'è la <a href="/custom" class="text-orange underline">Linea Custom</a>: abbigliamento da 10 pezzi, shopper in cotone da 100, lanyard per eventi da 100, calzini full-jacquard da 50. Pantone esatto, stampa su tutta la superficie. Su richiesta, articoli certificati OEKO-TEX, GRS, Fairtrade, EU Ecolabel e altri, in RPET, bambù o cotone biologico.</p>
+          <p>Consegna standard a partire da 2-3 giorni lavorativi dalla conferma (dipende da prodotto e quantità), linea custom 12-15 giorni, express su richiesta. Gli stessi tempi validi in tutta Italia: non promettiamo consegne più rapide perché siamo di Genova, sarebbe scorretto dirlo.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Un'azienda radicata, non solo un sito</h2>
+        <div class="text-ink/70 leading-relaxed space-y-4">
+          <p>Siamo membri ASSOPROM, l'associazione italiana dei produttori e distributori di articoli pubblicitari e promozionali. Lavoriamo per marchi come Red Bull, Binance, MediaWorld, Monge, RDS, Radio Italia, SEA Milano, Wonderbox, EdiliziaAcrobatica, Prato Nevoso, AFRY e la Capitaneria di Porto.</p>
+          <p>Prima di ogni produzione ricevete una bozza pre-stampa gratuita, inclusa nel preventivo, senza impegno e prima di qualsiasi pagamento. Approvate voi, poi si parte. Mai il contrario.</p>
+        </div>
+      </div>
+
+      <div class="border-t border-ink/10 pt-10 text-center">
+        <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-2xl mx-auto">Preventivo gratuito, senza impegno.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/preventivo"
+            class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+            style="text-decoration:none;"
+          >
+            Richiedi Preventivo →
+          </a>
+          <a
+            href="https://wa.me/393451448645?text=Ciao%202promo%2C%20vorrei%20un%20preventivo"
+            target="_blank"
+            rel="noopener"
+            class="border-2 border-ink text-ink px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink hover:text-cream transition inline-block"
+            style="text-decoration:none;"
+          >
+            Scriveteci su WhatsApp
+          </a>
+        </div>
+        <p class="text-ink/70 text-sm mt-6">La bozza pre-stampa è sempre inclusa, prima di ogni pagamento.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <Faq items={faqItems} eyebrow="domande frequenti" heading="Le solite domande,<br>risposte oneste." />
+  <Footer />
+</BaseLayout>
