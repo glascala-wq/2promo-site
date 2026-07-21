@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,14 @@ export default defineConfig({
   integrations: [
     tailwind({
       applyBaseStyles: false,
+    }),
+    sitemap({
+      // escludi pagine di servizio dalla sitemap
+      filter: (page) =>
+        !page.includes('/grazie') &&
+        !page.includes('/cookie') &&
+        !page.includes('/privacy') &&
+        !page.includes('/termini'),
     }),
   ],
   vite: {

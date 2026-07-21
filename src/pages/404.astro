@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Pagina non trovata — 2promo.it"
+  description="La pagina che cercate non esiste. Ma i gadget sì: 30.000+ articoli personalizzabili col vostro logo."
+  noindex={true}
+>
+  <UrgencyBar />
+  <Navbar />
+
+  <header class="relative overflow-hidden isolate bg-cream min-h-[60vh] flex items-center">
+    <div class="absolute inset-0 glow-orange pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto px-6 py-24 text-center">
+      <div class="font-display-tight text-[24vw] md:text-[12vw] text-ink/10 leading-none select-none" aria-hidden="true">404</div>
+      <h1 class="font-display-tight text-4xl md:text-6xl text-ink leading-[0.95] mb-6 -mt-8 md:-mt-16">
+        Questa pagina<br>non si stampa.
+      </h1>
+      <p class="text-xl text-ink/75 max-w-xl mx-auto mb-10">
+        La pagina che cercate non esiste (o ha cambiato indirizzo). In compenso abbiamo <strong class="text-ink">30.000+ articoli</strong> che esistono eccome.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition" style="text-decoration:none;">
+          Torna alla home →
+        </a>
+        <a href="/catalogo" class="border-2 border-ink text-ink px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink hover:text-cream transition" style="text-decoration:none;">
+          Sfoglia i cataloghi
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <Footer />
+</BaseLayout>

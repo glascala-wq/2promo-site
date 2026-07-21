@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import UrgencyBar from '../components/UrgencyBar.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
@@ -33,9 +34,10 @@ const faqCustom = [
 ---
 
 <BaseLayout
-  title="Linea Custom — 2promo.it · Pantone esatto, stampa su misura, da 10 pezzi"
-  description="Stampa custom su tutta la superficie, Pantone esatti, ordine minimo da 10 pezzi. T-shirt, borse, cordini eventi, calzini su misura per il vostro brand."
+  title="Gadget Personalizzati su Misura da 10 Pezzi | 2promo.it"
+  description="Gadget personalizzati su misura per aziende: stampa su tutta la superficie, Pantone esatti, da 10 pezzi. T-shirt, shopper, lanyard, calzini. Bozza gratuita."
 >
+  <Breadcrumbs items={[{ name: 'Linea Custom', url: '/custom' }]} />
   <UrgencyBar />
   <Navbar activeRoute="custom" />
   <Hero variant="custom" />

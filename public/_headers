@@ -1,0 +1,28 @@
+# Cloudflare Pages — headers custom
+
+# Dominio di preview: fuori dall'indicizzazione (il canonical punta già a www.2promo.it,
+# questo evita comunque che pages.dev compaia come duplicato in SERP)
+https://2promo-landing.pages.dev/*
+  X-Robots-Tag: noindex
+
+# Asset con hash nel nome (Vite/Astro) — immutabili, cache lunga
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Immagini statiche — cache media
+/brand/*
+  Cache-Control: public, max-age=86400
+/images/*
+  Cache-Control: public, max-age=86400
+/products/*
+  Cache-Control: public, max-age=86400
+/clients/*
+  Cache-Control: public, max-age=86400
+/certifications/*
+  Cache-Control: public, max-age=86400
+
+# Security headers di base
+/*
+  Strict-Transport-Security: max-age=15552000; includeSubDomains
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

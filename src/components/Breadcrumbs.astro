@@ -1,0 +1,40 @@
+---
+// Breadcrumbs — BreadcrumbList JSON-LD (GEO/SEO), nessun elemento visivo aggiunto in pagina
+// per non toccare il layout esistente: solo dato strutturato per i crawler.
+interface Crumb {
+  name: string;
+  url: string; // path assoluto es. '/custom'
+}
+interface Props {
+  items: Crumb[];
+}
+const { items } = Astro.props;
+
+const SITE = 'https://www.2promo.it';
+
+// URL sempre con trailing slash (il sito fa 308 /path -> /path/)
+const withSlash = (p: string) => (p.endsWith('/') ? p : `${p}/`);
+
+const breadcrumbList = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: SITE + '/',
+    },
+    ...items.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: c.name,
+      item: new URL(withSlash(c.url), SITE).href,
+    })),
+  ],
+};
+
+const json = JSON.stringify(breadcrumbList).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={json} />

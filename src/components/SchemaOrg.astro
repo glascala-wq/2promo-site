@@ -1,0 +1,114 @@
+---
+// SchemaOrg — Organization + WebSite JSON-LD sitewide (GEO/SEO)
+// Fatti verificati sui sorgenti del sito: P.IVA/REA (Footer.astro), dal 2014, 30.000+ articoli,
+// membro ASSOPROM (Footer.astro), contatti (Footer/ContactForm). Niente placeholder: l'indirizzo
+// fisico completo non è pubblicato sul sito, quindi qui compare solo città/regione/paese.
+// Niente "24h" (policy brand memory.md riga 34: vietati riferimenti temporali tipo "risposta in 24h").
+const SITE = 'https://www.2promo.it';
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'OnlineBusiness'],
+  '@id': `${SITE}/#organization`,
+  name: '2promo.it',
+  legalName: 'JAS Srl',
+  alternateName: '2promo',
+  url: SITE,
+  logo: { '@type': 'ImageObject', url: `${SITE}/brand/logo.png` },
+  image: `${SITE}/og-image.png`,
+  slogan: 'Stampa senza regole',
+  description:
+    'Fornitore B2B di gadget aziendali personalizzati attivo dal 2014: oltre 30.000 articoli a catalogo stampabili con logo aziendale e linea custom su misura da 10 pezzi. Serigrafia, tampografia, transfer digitale, incisione laser, ricamo. Bozza pre-stampa gratuita, consegna standard a partire da 2-3 giorni in tutta Italia.',
+  foundingDate: '2014',
+  vatID: 'IT02278140997',
+  identifier: { '@type': 'PropertyValue', propertyID: 'REA', value: 'GE-474160' },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Genova',
+    addressRegion: 'Liguria',
+    addressCountry: 'IT',
+  },
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      telephone: '+39-345-144-8645',
+      email: 'info@2promo.it',
+      availableLanguage: ['Italian'],
+      areaServed: ['IT', 'EU'],
+    },
+  ],
+  memberOf: {
+    '@type': 'Organization',
+    name: 'ASSOPROM — Associazione Italiana Produttori e Distributori Articoli Pubblicitari e Promozionali',
+  },
+  sameAs: ['https://www.linkedin.com/company/2promo/'],
+  areaServed: { '@type': 'Country', name: 'Italy' },
+  knowsAbout: [
+    'gadget aziendali personalizzati',
+    'articoli promozionali B2B',
+    'welcome kit aziendali',
+    'merchandising aziendale',
+    'serigrafia',
+    'tampografia',
+    'ricamo',
+    'incisione laser',
+    'stampa transfer digitale',
+    'gadget ecosostenibili RPET',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Gadget aziendali personalizzati',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Catalogo standard — 30.000+ articoli personalizzabili',
+          description:
+            'Penne, borracce, tazze, zaini, USB, power bank, welcome kit e gadget eco (RPET, bambù, cotone bio) con stampa del logo. Consegna standard a partire da 2-3 giorni lavorativi dalla conferma, campione disponibile su gran parte del catalogo, bozza pre-stampa gratuita.',
+        },
+        eligibleQuantity: { '@type': 'QuantitativeValue', minValue: 1 },
+        areaServed: 'IT',
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Linea custom — produzione su misura',
+          description:
+            'Abbigliamento custom (t-shirt, polo, felpe) da 10 pezzi, shopper in cotone da 100 pezzi, lanyard eventi da 100 pezzi, calzini full-jacquard da 50 pezzi. Pantone esatto, stampa su tutta la superficie del prodotto.',
+        },
+        eligibleQuantity: { '@type': 'QuantitativeValue', minValue: 10 },
+        areaServed: 'IT',
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Welcome kit aziendali per onboarding',
+          description:
+            'Kit di benvenuto per dipendenti composti su misura: zaino o shopper, borraccia, taccuino, penna e accessori tech brandizzati con il logo aziendale.',
+        },
+      },
+    ],
+  },
+};
+
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${SITE}/#website`,
+  url: SITE,
+  name: '2promo.it',
+  inLanguage: 'it-IT',
+  publisher: { '@id': `${SITE}/#organization` },
+};
+
+// Anti-breakout: escape di </ per evitare chiusura anticipata del tag <script>
+const orgJson = JSON.stringify(organization).replace(/</g, '\\u003c');
+const siteJson = JSON.stringify(website).replace(/</g, '\\u003c');
+---
+
+<script type="application/ld+json" set:html={orgJson} />
+<script type="application/ld+json" set:html={siteJson} />

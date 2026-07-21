@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import UrgencyBar from '../components/UrgencyBar.astro';
 import Navbar from '../components/Navbar.astro';
 import ContactForm from '../components/ContactForm.astro';
@@ -7,9 +8,10 @@ import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout
-  title="Richiedi preventivo · 2promo.it"
-  description="Preventivo per gadget aziendali personalizzati. Bozza pre-stampa gratuita in 24h. Catalogo 30.000+ articoli + linea custom da 10 pezzi."
+  title="Preventivo Gratuito per Gadget Personalizzati | 2promo.it"
+  description="Richiedi un preventivo gratuito per gadget aziendali personalizzati: bozza pre-stampa gratuita, 30.000+ articoli, linea custom da 10 pezzi. Senza impegno."
 >
+  <Breadcrumbs items={[{ name: 'Preventivo', url: '/preventivo' }]} />
   <UrgencyBar />
   <Navbar activeRoute="preventivo" />
 

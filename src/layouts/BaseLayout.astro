@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import CookieBanner from '../components/CookieBanner.astro';
+import SchemaOrg from '../components/SchemaOrg.astro';
 
 interface Props {
   title?: string;
@@ -37,17 +38,28 @@ const ogImageURL = new URL(ogImage, SITE);
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="2promo.it" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={ogImageURL.href} />
   <meta property="og:url" content={canonicalURL.href} />
   <meta property="og:locale" content="it_IT" />
 
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL.href} />
+
   <!-- Canonical -->
   <link rel="canonical" href={canonicalURL.href} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Structured data (Organization + WebSite) -->
+  <SchemaOrg />
 
   <!-- ========================================
        CONSENT MODE v2 — DEVE ESSERE PRIMA di gtag.js

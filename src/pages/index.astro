@@ -16,36 +16,36 @@ import Footer from '../components/Footer.astro';
 
 const faqItems = [
   {
-    q: 'Tempi di consegna?',
+    q: 'Quali sono i tempi di consegna dei gadget personalizzati?',
     a: 'A partire da 2-3 giorni dalla conferma per gli ordini standard (il tempo esatto dipende da prodotto e quantità). 12-15 giorni per la linea custom. Su richiesta organizziamo consegne express per scadenze urgenti.',
     open: true,
   },
   {
     q: 'Posso vedere una bozza prima di pagare?',
-    a: 'Sì, sempre. Bozza visiva inclusa nel preventivo, gratuita, in 24h. Approvate prima, pagate dopo. Mai mockup dopo pagamento.',
+    a: 'Sì, sempre. Bozza visiva inclusa nel preventivo, gratuita, senza impegno. Approvate prima, pagate dopo. Mai mockup dopo pagamento.',
   },
   {
-    q: 'Posso ordinare piccoli quantitativi per testare?',
-    a: 'Sì, anche un singolo pezzo come campione su molti articoli del catalogo standard. Sulla Linea Custom partiamo da 10 pezzi su misura. Per collezioni particolari definiamo insieme un lotto pilota personalizzato.',
+    q: 'Posso ordinare piccole quantità di gadget aziendali personalizzati?',
+    a: 'Sì, anche un singolo pezzo come campione su molti articoli del catalogo standard. Sulla <a href="/custom" class="text-orange underline">Linea Custom</a> partiamo da 10 pezzi su misura. Per collezioni particolari definiamo insieme un lotto pilota personalizzato.',
   },
   {
-    q: 'Che tipi di stampa offrite?',
+    q: 'Quali tecniche di stampa usate per personalizzare i gadget?',
     a: 'Serigrafia, tampografia, transfer digitale, incisione laser, ricamo. Il nostro reparto tecnico vi consiglia la tecnica migliore in base al materiale, ai colori Pantone e all\'effetto desiderato.',
   },
   {
-    q: 'I prodotti sono sostenibili e certificati?',
+    q: 'I gadget aziendali sono sostenibili e certificati?',
     a: 'Gran parte del catalogo è realizzata in RPET, bamboo, sughero o materiali riciclati, con certificazioni FSC, GOTS o OEKO-TEX. Su richiesta vi forniamo le certificazioni specifiche per ogni articolo.',
   },
   {
-    q: 'Spedite in tutta Italia?',
+    q: 'Spedite i gadget personalizzati in tutta Italia?',
     a: 'Sì, in tutta Italia. Su richiesta, anche nel resto d\'Europa. Stampa e personalizzazione vengono curate dal nostro team interno.',
   },
 ];
 ---
 
 <BaseLayout
-  title="2promo.it — Gadget aziendali personalizzati. Stampiamo su tutto."
-  description="Gadget aziendali personalizzati B2B. 30.000+ articoli a catalogo, linea custom su misura da 10 pezzi. Dal 2014."
+  title="Gadget Aziendali Personalizzati: 30.000+ Articoli | 2promo.it"
+  description="Gadget aziendali personalizzati: 30.000+ articoli promozionali, linea custom da 10 pezzi, bozza visiva gratuita. Dal 2014. Richiedi un preventivo gratuito."
 >
   <UrgencyBar />
   <Navbar activeRoute="home" />
@@ -58,6 +58,28 @@ const faqItems = [
   <HowItWorks variant="standard" />
   <Faq items={faqItems} />
   <Certifications />
+
+  <!-- Sezione testuale indicizzabile: copre le query che i buyer B2B cercano davvero -->
+  <section class="bg-cream pb-20 md:pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-8 h-px bg-ink"></span>
+        <span class="eyebrow text-ink/70">chi siamo</span>
+      </div>
+      <h2 class="font-display-tight text-3xl md:text-4xl text-ink leading-tight mb-6">
+        Gadget promozionali per aziende, dal 2014.
+      </h2>
+      <div class="text-ink/70 leading-relaxed space-y-4 max-w-3xl">
+        <p>
+          2promo.it è il reparto gadget aziendali di <strong class="text-ink">JAS Srl</strong>, attiva dal 2014 nella fornitura di <strong class="text-ink">gadget personalizzati per aziende</strong>: penne, borracce, zaini, power bank, welcome kit per dipendenti e regali aziendali personalizzati, tutti stampabili col vostro logo. Il catalogo copre oltre 30.000 articoli promozionali, dal singolo campione alle grandi commesse.
+        </p>
+        <p>
+          Per progetti su misura — forme custom, Pantone esatto, merchandising aziendale multi-prodotto — lavoriamo con la <a href="/custom" class="text-orange underline">Linea Custom</a>, da 10 pezzi. Spedizioni in tutta Italia, su richiesta anche in Europa. Siamo membri <strong class="text-ink">ASSOPROM</strong>, l'associazione italiana dei produttori e distributori di articoli pubblicitari e promozionali.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <ContactForm id="preventivo" />
   <Footer />
 </BaseLayout>

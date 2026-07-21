@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
 import UrgencyBar from '../components/UrgencyBar.astro';
 import Navbar from '../components/Navbar.astro';
 import CatalogForm from '../components/CatalogForm.astro';
@@ -12,9 +13,10 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
 ---
 
 <BaseLayout
-  title="Catalogo 2promo.it — Sfoglia la nostra selezione gadget aziendali"
-  description="Sfoglia la nostra selezione di gadget aziendali personalizzabili. Catalogo Standard 484 pagine + Linea Custom su misura. Preventivo gratuito."
+  title="Catalogo Gadget Aziendali e Articoli Promozionali | 2promo.it"
+  description="Sfoglia il catalogo: gadget aziendali personalizzati, abbigliamento, articoli eco e allestimenti fiera. 30.000+ articoli. Preventivo gratuito."
 >
+  <Breadcrumbs items={[{ name: 'Catalogo', url: '/catalogo' }]} />
   <UrgencyBar />
   <Navbar activeRoute="catalogo" />
 
@@ -114,6 +116,30 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
         >
           Apri a tutto schermo ↗
         </a>
+      </div>
+
+      <!-- Testo indicizzabile: il contenuto dei cataloghi vive negli iframe di terzi,
+           qui riassumiamo cosa c'è dentro con le keyword che i clienti cercano davvero -->
+      <div class="max-w-3xl mx-auto mt-16 text-ink/70 leading-relaxed space-y-4">
+        <p>
+          Nel <strong class="text-ink">catalogo standard</strong> trovate oltre 30.000 <strong class="text-ink">gadget aziendali personalizzati</strong>: borracce, power bank, shopper in cotone, penne, taccuini, ombrelli, welcome kit per dipendenti e regali aziendali per Natale. Nella <strong class="text-ink">linea custom</strong> lavoriamo su misura da 10 pezzi: forme personalizzate, Pantone esatto, stampa su tutta la superficie. Il catalogo <strong class="text-ink">abbigliamento</strong> copre t-shirt, felpe, polo e workwear; gli <strong class="text-ink">allestimenti</strong> coprono stand fiera, banchetti, totem, gazebo, bandiere e roll-up per eventi e fiere.
+        </p>
+        <div class="pt-4">
+          <details class="faq-item border-2 border-ink/10 rounded-2xl bg-cream hover:border-orange transition">
+            <summary class="cursor-pointer p-5 flex items-center justify-between gap-6">
+              <span class="font-display text-base text-ink">Come ricevo i prezzi dei gadget personalizzati?</span>
+              <span class="faq-icon text-orange text-2xl font-light leading-none">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-ink/70 leading-relaxed">Il catalogo non ha prezzi pubblici: dopo il vostro brief (prodotto, quantità, logo) vi mandiamo un preventivo su misura, con bozza pre-stampa inclusa e gratuita.</div>
+          </details>
+          <details class="faq-item border-2 border-ink/10 rounded-2xl bg-cream hover:border-orange transition mt-3">
+            <summary class="cursor-pointer p-5 flex items-center justify-between gap-6">
+              <span class="font-display text-base text-ink">Posso avere il catalogo gadget aziendali in PDF?</span>
+              <span class="faq-icon text-orange text-2xl font-light leading-none">+</span>
+            </summary>
+            <div class="px-5 pb-5 text-ink/70 leading-relaxed">Sì — lasciate l'email qui sotto e vi spediamo il PDF del catalogo standard, pronto da condividere col vostro team.</div>
+          </details>
+        </div>
       </div>
 
     </div>

@@ -3,4 +3,47 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://2promo.it/sitemap.xml
+# --- AI crawlers (GEO): esplicitamente benvenuti ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://www.2promo.it/sitemap-index.xml
