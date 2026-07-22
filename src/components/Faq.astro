@@ -34,12 +34,12 @@ const faqJsonLd = JSON.stringify({
 ---
 
 <section id="faq" class="bg-cream pb-24 md:pb-32">
-  <div class="max-w-5xl mx-auto px-6">
+  <div class="max-w-7xl mx-auto px-6">
     <div class="flex items-center gap-3 mb-6" data-reveal>
       <span class="eyebrow text-ink/70">{eyebrow}</span>
     </div>
-    <h2 class="font-display-tight text-5xl md:text-6xl leading-[0.95] mb-12" data-reveal set:html={heading} />
-    <div class="space-y-3">
+    <h2 class="font-display-tight text-5xl md:text-6xl leading-[0.95] mb-12 max-w-3xl" data-reveal set:html={heading} />
+    <div class="space-y-3 max-w-3xl">
       {items.map((item, i) => (
         <details
           class="faq-item border-2 border-ink/10 rounded-2xl bg-cream hover:border-orange transition"
