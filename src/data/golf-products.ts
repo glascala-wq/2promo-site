@@ -39,14 +39,6 @@ export const GOLF_PRODUCTS: GolfProduct[] = [
     blockText: 'text-cream',
   },
   {
-    slug: 'tee-marker',
-    name: 'Tee marker personalizzati',
-    description: 'Con il logo sponsor o del circolo su ogni buca.',
-    type: 'block',
-    blockBg: 'bg-orange-pale',
-    blockText: 'text-ink',
-  },
-  {
     slug: 'banner',
     name: 'Banner personalizzati',
     description: 'Per la premiazione o il percorso di gara.',

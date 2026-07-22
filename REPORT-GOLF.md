@@ -1,13 +1,13 @@
 # Report: Verticale Golf (`/golf`)
 
-Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4" più sotto).
+Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5" più sotto).
 
-## Cosa c'è (stato attuale, dopo Round 4)
+## Cosa c'è (stato attuale, dopo Round 5)
 
-- `/golf`: landing long-scroll con hero, trust marquee (riuso client esistenti), sezione "Componi il tuo kit" (14 prodotti selezionabili), struttura+grafica, come funziona e promessa consegna, rinnovo stagione, FAQ, form richiesta
+- `/golf`: landing long-scroll con hero, trust marquee (riuso client esistenti), sezione "Componi il tuo kit" (13 prodotti selezionabili), struttura+grafica, come funziona e promessa consegna, rinnovo stagione, FAQ, form richiesta
 - `/golf/grazie`: thank-you dedicata, tag conversione golf separato (Google Ads condizionato a env var, GA4 sempre attivo)
 - `src/pages/api/lead-golf.ts`: Brevo (lista dedicata) più notifica email interna e redirect, stesso pattern anti-spam (honeypot, timestamp, Turnstile) di `/api/lead.ts`
-- `src/data/golf-products.ts`: fonte unica dei 14 prodotti del selettore
+- `src/data/golf-products.ts`: fonte unica dei 13 prodotti del selettore
 - Componenti in `src/components/golf/` (Hero, ComponiKit, StrutturaGrafica, ComeFunziona, Rinnovo, ContactForm). Nessun componente esistente del sito modificato, tutti riusati as-is (BaseLayout, Navbar, Footer, CookieBanner, Trust, Faq, Breadcrumbs)
 
 Non esistono più: le 3 pagine di dettaglio kit, il componente kit a 3 card, il catalogo completo separato, le icone SVG del Round 3. Vedi "Round 4" per il perché.
@@ -45,6 +45,10 @@ Due richieste dirette di Giovanni il giorno dopo, entrambe applicate:
    Risultato: 4 prodotti con foto reale (fondale, gazebo, gonfiabile, segnaletica, tutte in duotone), 10 con card tipografica pulita. Durante la verifica Lighthouse ho anche trovato e corretto due problemi nuovi introdotti da questo lavoro: testo crema su sfondo arancio nelle card tipografiche (contrasto insufficiente, corretto in blu navy) e un bug nel trattamento duotone sulle PNG con trasparenza (l'area trasparente diventava nera invece che chiara, corretto con un flatten su sfondo bianco prima della conversione).
 
 Dettaglio di ogni foto scelta e scartata in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (interno, fuori dal repo pubblico).
+
+## Round 5 (22 luglio, "togliamo tee marker personalizzati")
+
+Giovanni ha chiesto di togliere "Tee marker personalizzati" dal catalogo del selettore. Rimosso l'item da `golf-products.ts`: il selettore passa da 14 a 13 prodotti (4 con foto reale, invariati; 9 con card tipografica, non più 10). Nessun altro file di codice toccato: la card era `type: 'block'`, nessuna foto o asset dedicato da rimuovere. Aggiornati i riferimenti in `TBD-REGISTRY.md` e in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (interno).
 
 ## Lighthouse (build di produzione, locale, dopo Round 4)
 
