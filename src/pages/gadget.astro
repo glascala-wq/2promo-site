@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import UrgencyBar from '../components/UrgencyBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import SocialProof from '../components/SocialProof.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Faq from '../components/Faq.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+
+const IFRAME_STANDARD = 'https://view.publitas.com/md-it/gifts_ita_without-prices_1/page/1';
+
+const faqGadget = [
+  {
+    q: 'Che differenza c’è, in pratica, tra catalogo standard e linea custom?',
+    a: 'Il catalogo standard personalizza un prodotto che esiste già: si sceglie l’articolo e si applica il logo nella zona di stampa prevista, con la tecnica più adatta a materiale e effetto desiderato, decisa dal nostro reparto tecnico caso per caso. Tempi e ordine minimo restano contenuti. La <a href="/custom" class="text-orange underline">linea custom</a> parte invece dalla forma: colore Pantone esatto, stampa anche su tutta la superficie, tempi di realizzazione più lunghi e un ordine minimo diverso, spiegato nella sua pagina dedicata. Per un logo su un buon prodotto già pronto, il catalogo standard resta la strada più diretta.',
+    open: true,
+  },
+  {
+    q: 'Cosa succede se un articolo del catalogo risulta esaurito?',
+    a: 'La disponibilità reale viene verificata al momento del preventivo: se un articolo o una variante di colore è esaurita a magazzino o dal fornitore, ve lo segnaliamo prima di procedere e proponiamo un’alternativa equivalente per caratteristiche e fascia di prezzo, così i tempi di consegna restano quelli previsti.',
+  },
+  {
+    q: 'Per il catalogo standard, come si vede in anticipo il risultato finale?',
+    a: 'Trattandosi di un prodotto già esistente, la bozza mostra il vostro logo applicato nella zona di stampa reale dell’articolo scelto, con colori e proporzioni corretti. Non è il rendering di un progetto nuovo, ma un’anteprima fedele di ciò che riceverete: la approvate prima che l’ordine vada in produzione, così potete valutare con calma, senza sorprese quando l’ordine viene confermato.',
+  },
+];
+---
+
+<BaseLayout
+  title="Gadget Aziendali dal Catalogo Standard | 2promo.it"
+  description="Il catalogo 2promo conta oltre 30.000 articoli, consegna a partire da 2-3 giorni lavorativi e ordine minimo contenuto. Il su misura? È nella linea custom."
+>
+  <Breadcrumbs items={[{ name: 'Gadget', url: '/gadget' }]} />
+  <UrgencyBar />
+  <Navbar activeRoute="gadget" />
+  <Hero variant="gadget" />
+  <SocialProof />
+  <TrustBar />
+
+  <!-- 3 USP cards -->
+  <section class="bg-cream py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-navy text-cream rounded-3xl p-8" data-reveal>
+          <div class="font-display-tight text-orange text-5xl mb-4">01</div>
+          <h3 class="font-display-tight text-3xl mb-3">Un catalogo enorme</h3>
+          <p class="text-cream/70 leading-relaxed">Dall'ufficio al drinkware, dal tech agli accessori outdoor: oltre 30.000 articoli coprono ambiti molto diversi, un buon punto di partenza per quasi ogni settore o esigenza aziendale.</p>
+        </div>
+        <div class="bg-orange text-cream rounded-3xl p-8" data-reveal>
+          <div class="font-display-tight text-ink text-5xl mb-4">02</div>
+          <h3 class="font-display-tight text-3xl mb-3">Consegna da 2-3 giorni</h3>
+          <p class="text-cream/90 leading-relaxed">Perché il prodotto esiste già, non c'è uno stampo da preparare né un prototipo da approvare prima di iniziare: la stampa del logo parte quasi subito, con un tempo tipico a partire da 2-3 giorni lavorativi.</p>
+        </div>
+        <div class="bg-ink text-cream rounded-3xl p-8" data-reveal>
+          <div class="font-display-tight text-orange text-5xl mb-4">03</div>
+          <h3 class="font-display-tight text-3xl mb-3">Anche un pezzo solo</h3>
+          <p class="text-cream/70 leading-relaxed">Utile quando dovete decidere tra due o tre articoli simili: ordinatene uno di ciascuno, toccate con mano qualità e resa della stampa, poi definite la quantità vera con più sicurezza.</p>
+        </div>
+      </div>
+      <p class="text-center text-ink/70 mt-10 max-w-3xl mx-auto">
+        Il catalogo standard è la parte di 2promo dove il prodotto esiste già: lo si sceglie, lo si personalizza col vostro logo, lo si spedisce.
+      </p>
+    </div>
+  </section>
+
+  <!-- Catalogo sfogliabile -->
+  <section class="bg-cream pb-20 md:pb-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-6" data-reveal>
+        <span class="eyebrow text-ink/70">sfogliate il catalogo</span>
+      </div>
+      <h2 class="font-display-tight text-4xl md:text-6xl text-ink leading-[0.95] mb-10 max-w-3xl" data-reveal>
+        30.000+ articoli,<br>una selezione da sfogliare qui.
+      </h2>
+      <div
+        class="catalog-frame max-w-6xl mx-auto bg-cream rounded-2xl shadow-2xl overflow-hidden border border-ink/10"
+        style="aspect-ratio: 16/10;"
+      >
+        <iframe
+          src={IFRAME_STANDARD}
+          title="Catalogo standard 2promo"
+          class="w-full h-full"
+          loading="lazy"
+          allow="fullscreen"
+          referrerpolicy="no-referrer"
+        ></iframe>
+      </div>
+      <div class="max-w-6xl mx-auto mt-4 text-right">
+        <a
+          href={IFRAME_STANDARD}
+          target="_blank"
+          rel="noopener"
+          class="text-sm font-bold text-ink/60 hover:text-orange transition"
+        >
+          Apri a tutto schermo ↗
+        </a>
+      </div>
+      <p class="text-ink/70 mt-8 max-w-3xl">
+        Cercate un prodotto pensato su misura, dalla forma al colore esatto? È il campo della <a href="/custom" class="text-orange underline">linea custom</a>. Per il catalogo intero (comprese abbigliamento e allestimenti) c'è la pagina <a href="/catalogo" class="text-orange underline">Catalogo</a>.
+      </p>
+    </div>
+  </section>
+
+  <Faq
+    items={faqGadget}
+    eyebrow="domande sul catalogo standard"
+    heading="Le solite domande,<br>risposte oneste."
+  />
+  <ContactForm id="preventivo" preselectLinea="standard" variant="navy" />
+  <Footer />
+</BaseLayout>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: 'home' | 'custom';
+  variant?: 'home' | 'custom' | 'gadget';
 }
 const { variant = 'home' } = Astro.props;
 ---
@@ -51,6 +51,37 @@ const { variant = 'home' } = Astro.props;
       </div>
     </div>
   </header>
+) : variant === 'gadget' ? (
+  <header class="relative overflow-hidden isolate bg-cream">
+    <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
+    <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="eyebrow text-orange">catalogo standard · una sezione di 2promo</span>
+      </div>
+      <h1 class="font-display-tight text-[10vw] md:text-[6.5vw] leading-[0.9] text-ink mb-6 max-w-5xl">
+        Il catalogo che c'è già: <span class="underline-orange">pronto</span>, ampio, veloce.
+      </h1>
+      <p class="text-xl md:text-2xl text-ink/75 max-w-3xl mb-10 leading-relaxed">
+        Il catalogo standard è la parte di 2promo dove il prodotto esiste già: lo si sceglie, lo si personalizza con il vostro logo, lo si spedisce. Nessun disegno tecnico da approvare, nessuna forma da inventare: solo un oggetto reale che diventa vostro in pochi giorni. Se il progetto ha invece bisogno di una forma, un materiale o un colore pensati da zero, la risposta è nella linea custom.
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a
+          href="#preventivo"
+          class="btn-orange bg-orange text-cream px-8 py-5 text-base font-bold tracking-wide rounded-full hover:bg-ink transition shadow-lg shadow-orange/20"
+          style="text-decoration:none;"
+        >
+          Richiedi Preventivo →
+        </a>
+        <a
+          href="/custom/"
+          class="border-2 border-ink text-ink px-8 py-5 text-base font-bold tracking-wide rounded-full hover:bg-ink hover:text-cream transition"
+          style="text-decoration:none;"
+        >
+          Scopri la linea Custom →
+        </a>
+      </div>
+    </div>
+  </header>
 ) : (
   <header class="relative overflow-hidden isolate bg-cream">
     <div class="absolute inset-0 glow-orange pointer-events-none opacity-60"></div>
@@ -73,7 +104,7 @@ const { variant = 'home' } = Astro.props;
           Richiedi Preventivo Custom →
         </a>
         <a
-          href="/catalogo/"
+          href="/gadget/"
           class="border-2 border-ink text-ink px-8 py-5 text-base font-bold tracking-wide rounded-full hover:bg-ink hover:text-cream transition"
           style="text-decoration:none;"
         >
