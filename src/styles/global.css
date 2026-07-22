@@ -170,8 +170,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 320px;
-    height: 320px;
+    width: 180px;
+    height: 180px;
     background: radial-gradient(circle at center, rgba(254, 80, 0, 0.22) 0%, rgba(254, 80, 0, 0) 70%);
     pointer-events: none;
     z-index: 20;

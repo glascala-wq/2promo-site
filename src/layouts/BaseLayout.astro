@@ -234,7 +234,7 @@ const ogImageURL = new URL(ogImage, SITE);
       if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      var GLOW_SIZE = 320;
+      var GLOW_SIZE = 180;
       var RING_SIZE = 32;
       var DOT_SIZE = 6;
 
@@ -262,7 +262,6 @@ const ogImageURL = new URL(ogImage, SITE);
       window.addEventListener('mousemove', function (e) {
         targetX = e.clientX;
         targetY = e.clientY;
-        dot.style.transform = 'translate3d(' + (targetX - DOT_SIZE / 2) + 'px, ' + (targetY - DOT_SIZE / 2) + 'px, 0)';
         if (!active) {
           active = true;
           glow.classList.add('is-active');
@@ -291,6 +290,7 @@ const ogImageURL = new URL(ogImage, SITE);
 
         glow.style.transform = 'translate3d(' + (glowX - GLOW_SIZE / 2) + 'px, ' + (glowY - GLOW_SIZE / 2) + 'px, 0) scale(' + glowScale + ')';
         ring.style.transform = 'translate3d(' + (ringX - RING_SIZE / 2) + 'px, ' + (ringY - RING_SIZE / 2) + 'px, 0)';
+        dot.style.transform = 'translate3d(' + (ringX - DOT_SIZE / 2) + 'px, ' + (ringY - DOT_SIZE / 2) + 'px, 0)';
 
         requestAnimationFrame(tick);
       }
