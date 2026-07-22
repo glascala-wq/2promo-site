@@ -234,7 +234,7 @@ const ogImageURL = new URL(ogImage, SITE);
       if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-      var GLOW_SIZE = 180;
+      var GLOW_SIZE = 70;
       var RING_SIZE = 32;
       var DOT_SIZE = 6;
 
@@ -257,6 +257,7 @@ const ogImageURL = new URL(ogImage, SITE);
       var glowX = targetX, glowY = targetY;
       var ringX = targetX, ringY = targetY;
       var glowScale = 1;
+      var ringScale = 1;
       var active = false;
 
       window.addEventListener('mousemove', function (e) {
@@ -278,7 +279,8 @@ const ogImageURL = new URL(ogImage, SITE);
       });
 
       window.addEventListener('mousedown', function () {
-        glowScale = 1.6;
+        glowScale = 1.3;
+        ringScale = 0.6;
       }, { passive: true });
 
       function tick() {
@@ -287,9 +289,10 @@ const ogImageURL = new URL(ogImage, SITE);
         ringX += (targetX - ringX) * 0.25;
         ringY += (targetY - ringY) * 0.25;
         glowScale += (1 - glowScale) * 0.08;
+        ringScale += (1 - ringScale) * 0.15;
 
         glow.style.transform = 'translate3d(' + (glowX - GLOW_SIZE / 2) + 'px, ' + (glowY - GLOW_SIZE / 2) + 'px, 0) scale(' + glowScale + ')';
-        ring.style.transform = 'translate3d(' + (ringX - RING_SIZE / 2) + 'px, ' + (ringY - RING_SIZE / 2) + 'px, 0)';
+        ring.style.transform = 'translate3d(' + (ringX - RING_SIZE / 2) + 'px, ' + (ringY - RING_SIZE / 2) + 'px, 0) scale(' + ringScale + ')';
         dot.style.transform = 'translate3d(' + (ringX - DOT_SIZE / 2) + 'px, ' + (ringY - DOT_SIZE / 2) + 'px, 0)';
 
         requestAnimationFrame(tick);
