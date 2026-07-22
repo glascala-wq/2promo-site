@@ -90,6 +90,7 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
 
       <!-- Iframe Publitas 16:10 contained -->
       <div
+        id="catalog-frame"
         class="catalog-frame max-w-6xl mx-auto bg-cream rounded-2xl shadow-2xl overflow-hidden border border-ink/10"
         style="aspect-ratio: 16/10;"
       >
@@ -105,7 +106,7 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
       </div>
 
       <!-- Apri a tutto schermo (fallback utile, essenziale per il PDF su mobile) -->
-      <div class="max-w-6xl mx-auto mt-4 text-right">
+      <div id="catalog-open-wrap" class="max-w-6xl mx-auto mt-4 text-right">
         <a
           id="catalog-open"
           href={IFRAME_STANDARD}
@@ -115,6 +116,48 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
         >
           Apri a tutto schermo ↗
         </a>
+      </div>
+
+      <!-- Catalogo Allestimenti: PDF nativo, card di copertina invece dell'embed diretto (il visualizzatore PDF del browser è verticale, brutto se forzato in un riquadro 16:10) -->
+      <div id="catalog-pdf-card" class="hidden max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-8 md:gap-10 items-center bg-cream rounded-2xl shadow-2xl border border-ink/10 p-6 md:p-10">
+          <img
+            src="/cataloghi/allestimenti-cover.webp"
+            alt="Copertina del catalogo Allestimenti"
+            class="w-40 md:w-full mx-auto rounded-xl shadow-lg"
+            width="1600"
+            height="2263"
+            loading="lazy"
+          />
+          <div>
+            <span class="eyebrow text-orange">142 pagine · PDF</span>
+            <h3 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mt-3 mb-4">
+              Il catalogo Allestimenti, in un PDF sfogliabile.
+            </h3>
+            <p class="text-ink/70 leading-relaxed mb-6 max-w-md">
+              Fondali, totem, banchetti, segnaletica, gazebo, bandiere e roll-up: la gamma completa delle soluzioni per la comunicazione visiva, con schede e dimensioni prodotto.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a
+                href={IFRAME_ALLESTIMENTI}
+                target="_blank"
+                rel="noopener"
+                class="btn-orange bg-orange text-cream px-6 py-3 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+                style="text-decoration:none;"
+              >
+                Apri il PDF ↗
+              </a>
+              <a
+                href={IFRAME_ALLESTIMENTI}
+                download
+                class="border-2 border-ink/20 text-ink px-6 py-3 rounded-full font-bold tracking-wide hover:border-ink transition inline-block"
+                style="text-decoration:none;"
+              >
+                Scarica ↓
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Testo indicizzabile: il contenuto dei cataloghi vive negli iframe di terzi,
@@ -206,6 +249,9 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
     var heading = document.getElementById('catalog-heading');
     var sub = document.getElementById('catalog-sub');
     var openLink = document.getElementById('catalog-open');
+    var catalogFrame = document.getElementById('catalog-frame');
+    var openWrap = document.getElementById('catalog-open-wrap');
+    var pdfCard = document.getElementById('catalog-pdf-card');
 
     function setTab(tab) {
       // Update buttons (attivo = arancio, altri = grigi)
@@ -229,16 +275,26 @@ const IFRAME_ALLESTIMENTI = '/cataloghi/display-allestimenti-2026.pdf';
         sub.style.opacity = '1';
       }, 150);
 
-      // Update "apri a tutto schermo" link
-      if (openLink) openLink.href = iframeSrc[tab];
+      // Allestimenti = PDF nativo: card di copertina invece dell'iframe (niente visualizzatore PDF del browser forzato in un riquadro 16:10)
+      var isPdf = tab === 'allestimenti';
+      catalogFrame.classList.toggle('hidden', isPdf);
+      openWrap.classList.toggle('hidden', isPdf);
+      pdfCard.classList.toggle('hidden', !isPdf);
 
-      // Update iframe with fade
-      iframe.style.opacity = '0';
-      iframe.style.transition = 'opacity 0.3s';
-      setTimeout(function() {
-        iframe.src = iframeSrc[tab];
-        iframe.style.opacity = '1';
-      }, 300);
+      if (isPdf) {
+        iframe.removeAttribute('src');
+      } else {
+        // Update "apri a tutto schermo" link
+        if (openLink) openLink.href = iframeSrc[tab];
+
+        // Update iframe with fade
+        iframe.style.opacity = '0';
+        iframe.style.transition = 'opacity 0.3s';
+        setTimeout(function() {
+          iframe.src = iframeSrc[tab];
+          iframe.style.opacity = '1';
+        }, 300);
+      }
 
       // Update URL without reload
       var url = new URL(window.location.href);
