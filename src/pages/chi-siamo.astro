@@ -10,12 +10,12 @@ import Footer from '../components/Footer.astro';
 const faqItems = [
   {
     q: 'Chi c’è dietro 2promo.it?',
-    a: '2promo.it è il marchio con cui JAS Srl (P.IVA IT02278140997, REA GE-474160) opera nel settore dei gadget aziendali personalizzati. Sede ad Arenzano, provincia di Genova.',
+    a: '2promo.it è il marchio con cui JAS Srl (P.IVA IT02278140997, REA GE-474160) opera nel settore dei gadget e degli allestimenti personalizzati. Sede ad Arenzano, provincia di Genova.',
     open: true,
   },
   {
     q: 'Da quanto tempo lavorate nei gadget aziendali personalizzati?',
-    a: 'Dal 2014. Da allora abbiamo costruito un catalogo di oltre 30.000 articoli personalizzabili e una linea custom su misura, lavorando con aziende in tutta Italia.',
+    a: 'Dal 2014. Da allora abbiamo costruito due linee vere: un catalogo di oltre 30.000 articoli gadget personalizzabili più una linea custom su misura, e una linea di allestimenti personalizzati per eventi e punti vendita (fondali, totem, banchetti, roll-up, banner), pensati per il montaggio fai da te. Forniamo il materiale, non il montaggio in loco. Lavoriamo con aziende in tutta Italia.',
   },
   {
     q: 'Siete associati a qualcosa di riconosciuto nel settore?',
@@ -29,8 +29,8 @@ const faqItems = [
 ---
 
 <BaseLayout
-  title="Chi Siamo: Gadget Aziendali dal 2014 | 2promo.it"
-  description="2promo.it è il reparto gadget aziendali personalizzati di JAS Srl, dal 2014. Sede ad Arenzano, membri ASSOPROM. Bozza gratuita, mai mockup dopo pagamento."
+  title="Chi Siamo: Gadget e Allestimenti dal 2014 | 2promo.it"
+  description="2promo.it: gadget e allestimenti personalizzati di JAS Srl, dal 2014. Sede ad Arenzano, membro ASSOPROM. Bozza gratuita, mai mockup dopo pagamento."
 >
   <Breadcrumbs items={[{ name: 'Chi siamo', url: '/chi-siamo' }]} />
   <UrgencyBar />
@@ -44,10 +44,10 @@ const faqItems = [
         <span class="eyebrow text-orange">chi siamo</span>
       </div>
       <h1 class="font-display-tight text-[9vw] md:text-[4.5vw] leading-[0.95] text-ink mb-6 max-w-3xl" data-reveal>
-        Gadget aziendali personalizzati, dal 2014.<br>Senza scorciatoie.
+        Gadget e allestimenti personalizzati, dal 2014.<br>Senza scorciatoie.
       </h1>
       <p class="text-xl md:text-2xl text-ink/75 max-w-2xl leading-relaxed" data-reveal>
-        2promo.it è il marchio di JAS Srl dedicato ai gadget aziendali personalizzati: un catalogo di oltre 30.000 articoli pronti per il vostro logo, più una linea custom per chi vuole qualcosa che non esiste ancora. Non siamo l'ultimo arrivato che promette tutto e consegna poco. Siamo qui dal 2014, con sede ad Arenzano, in Liguria, e un metodo che non cambia: prima vi facciamo vedere cosa costruiamo, poi decidete.
+        2promo.it è il marchio di JAS Srl, ed è il punto di riferimento sia per i gadget aziendali personalizzati che per gli allestimenti di fiere, eventi e punti vendita. Da una parte un catalogo di oltre 30.000 articoli pronti per il vostro logo, più una linea custom per chi vuole qualcosa che non esiste ancora. Dall'altra il materiale per allestire uno stand o un evento, dai fondali ai roll-up, pensato per un montaggio che fate voi. Non siamo l'ultimo arrivato che promette tutto e consegna poco. Siamo qui dal 2014, con sede ad Arenzano, in Liguria, e un metodo che non cambia: prima vi facciamo vedere cosa costruiamo, poi decidete.
       </p>
     </div>
   </header>
@@ -59,8 +59,8 @@ const faqItems = [
       <div>
         <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4">Chi siamo davvero</h2>
         <div class="text-ink/70 leading-relaxed space-y-4">
-          <p>JAS Srl, P.IVA IT02278140997, REA GE-474160. 2promo.it è il nome con cui lavoriamo i gadget aziendali personalizzati: dalla penna con logo al welcome kit multi-prodotto, dal singolo campione alla commessa da migliaia di pezzi.</p>
-          <p>Sede ad <a href="/gadget-personalizzati-genova" class="text-orange underline">Arenzano, provincia di Genova</a>. Da qui coordiniamo un catalogo di oltre 30.000 articoli promozionali personalizzabili e una linea custom su misura per chi ha bisogno di qualcosa che il catalogo non copre. Lavoriamo con aziende di tutta Italia, resto d'Europa su richiesta, e siamo membri di <strong class="text-ink">ASSOPROM</strong>, l'Associazione Italiana Produttori e Distributori di Articoli Pubblicitari e Promozionali. Non è un'etichetta decorativa: è l'associazione di categoria di chi fa questo mestiere sul serio.</p>
+          <p>JAS Srl, P.IVA IT02278140997, REA GE-474160. 2promo.it è il nome con cui lavoriamo su due fronti, gadget e allestimenti personalizzati. Da una parte i gadget aziendali: dalla penna con logo al welcome kit multi-prodotto, dal singolo campione alla commessa da migliaia di pezzi. Dall'altra gli allestimenti per eventi e spazi espositivi: fondali, totem, banchetti, segnaletica, gazebo, bandiere, roll-up e banner.</p>
+          <p>Sede ad <a href="/gadget-personalizzati-genova" class="text-orange underline">Arenzano, provincia di Genova</a>. Da qui coordiniamo un catalogo di oltre 30.000 articoli promozionali personalizzabili, una linea custom su misura per chi ha bisogno di qualcosa che il catalogo non copre, e la linea allestimenti: un sistema modulare, struttura e grafica stampata gestite separatamente, montaggio semplice e in autonomia. Forniamo il materiale, non il servizio di installazione in loco. Lavoriamo con aziende di tutta Italia, resto d'Europa su richiesta, e siamo membri di <strong class="text-ink">ASSOPROM</strong>, l'Associazione Italiana Produttori e Distributori di Articoli Pubblicitari e Promozionali. Non è un'etichetta decorativa: è l'associazione di categoria di chi fa questo mestiere sul serio.</p>
         </div>
       </div>
 
