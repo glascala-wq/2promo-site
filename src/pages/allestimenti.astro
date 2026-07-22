@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
 const faqItems = [
   {
     q: 'Fate anche voi il montaggio dell’allestimento in fiera?',
-    a: 'No: forniamo il materiale (stand fiera, fondali, totem, banchetti, segnaletica, gazebo, bandiere, roll-up e banner), non il servizio di montaggio in loco. Tutti i materiali sono però pensati per un’installazione semplice, senza bisogno di tecnici: il montaggio può essere fatto direttamente dal vostro staff, senza attrezzi particolari, seguendo le istruzioni incluse.',
+    a: 'No: forniamo il materiale (fondali, totem, banchetti, segnaletica, gazebo, bandiere, roll-up e banner), non il servizio di montaggio in loco. Tutti i materiali sono però pensati per un’installazione semplice, senza bisogno di tecnici: il montaggio può essere fatto direttamente dal vostro staff, senza attrezzi particolari, seguendo le istruzioni incluse.',
     open: true,
   },
   {
@@ -19,7 +19,6 @@ const faqItems = [
 ];
 
 const categories = [
-  { name: 'Stand fiera', desc: 'Strutture modulari per lo spazio espositivo.', type: 'block', bg: 'bg-ink', text: 'text-cream' },
   { name: 'Fondali', desc: 'Per il retro banco o un photo backdrop.', type: 'photo', image: '/allestimenti/products/fondale.webp' },
   { name: 'Totem', desc: 'Informativi o direzionali, per l’ingresso.', type: 'photo', image: '/allestimenti/products/totem.webp' },
   { name: 'Banchetti', desc: 'Da esposizione o da reception.', type: 'photo', image: '/allestimenti/products/banchetto.webp' },
@@ -32,7 +31,7 @@ const categories = [
 
 <BaseLayout
   title="Allestimenti Fiera ed Eventi Personalizzati | 2promo.it"
-  description="Allestimenti fiera ed eventi: stand, fondali, totem, gazebo, bandiere, roll-up e banner personalizzati. Sistema modulare, montaggio semplice. Richiedi un preventivo su misura."
+  description="Allestimenti fiera ed eventi: fondali, totem, banchetti, gazebo, bandiere, roll-up e banner personalizzati. Sistema modulare, montaggio semplice. Richiedi un preventivo su misura."
 >
   <Breadcrumbs items={[{ name: 'Allestimenti', url: '/allestimenti' }]} />
   <UrgencyBar />
@@ -59,7 +58,7 @@ const categories = [
       <div>
         <h2 class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-4 max-w-3xl">Le categorie di allestimento per il vostro stand</h2>
         <div class="text-ink/70 leading-relaxed space-y-4 max-w-3xl mb-10">
-          <p>Il catalogo allestimenti raccoglie le famiglie di prodotto che servono per dare forma visiva a uno stand o a un evento: stand fiera modulari, fondali (per il retro del banco o per un photo backdrop), totem informativi o direzionali, banchetti da esposizione o da reception, segnaletica per orientare i visitatori, gazebo per gli spazi esterni, bandiere pubblicitarie e roll-up o banner per la comunicazione a parete o a pavimento.</p>
+          <p>Il catalogo allestimenti raccoglie le famiglie di prodotto che servono per dare forma visiva a uno stand o a un evento: fondali (per il retro del banco o per un photo backdrop), totem informativi o direzionali, banchetti da esposizione o da reception, segnaletica per orientare i visitatori, gazebo per gli spazi esterni, bandiere pubblicitarie e roll-up o banner per la comunicazione a parete o a pavimento.</p>
           <p>Ogni famiglia si personalizza con la vostra grafica (logo, payoff, immagini prodotto): quello che serve per rendere lo stand riconoscibile. Dimensioni e formati variano da prodotto a prodotto, quindi la combinazione giusta si costruisce insieme a voi: raccontateci il contesto (fiera, evento aziendale, apertura di un punto vendita) e lo spazio che avete a disposizione, il resto lo vediamo in fase di preventivo.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
