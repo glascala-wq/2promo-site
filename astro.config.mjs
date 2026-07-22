@@ -7,6 +7,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.2promo.it',
   output: 'static',
+  server: {
+    port: process.env.PORT ? Number(process.env.PORT) : 4321,
+  },
   adapter: cloudflare({
     platformProxy: {
       enabled: true,

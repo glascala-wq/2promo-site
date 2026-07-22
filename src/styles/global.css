@@ -165,6 +165,34 @@
     animation-delay: 0.6s;
   }
 
+  /* ===== POINTER GLOW (segue il mouse, coerente con .glow-orange) ===== */
+  .pointer-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle at center, rgba(254, 80, 0, 0.22) 0%, rgba(254, 80, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    will-change: transform;
+  }
+  .pointer-glow.is-active {
+    opacity: 1;
+  }
+  @media (hover: none), (pointer: coarse) {
+    .pointer-glow {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pointer-glow {
+      display: none;
+    }
+  }
+
 }
 
   /* ===== CLIENT LOGOS (trust marquee) ===== */

@@ -228,5 +228,45 @@ const ogImageURL = new URL(ogImage, SITE);
     });
   </script>
 
+  <!-- Pointer glow — alone arancione che segue il mouse (solo desktop, rispetta reduced-motion) -->
+  <script is:inline>
+    (function () {
+      if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var glow = document.createElement('div');
+      glow.className = 'pointer-glow';
+      document.body.appendChild(glow);
+
+      var targetX = window.innerWidth / 2;
+      var targetY = window.innerHeight / 2;
+      var currentX = targetX;
+      var currentY = targetY;
+      var active = false;
+
+      window.addEventListener('mousemove', function (e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+        if (!active) {
+          active = true;
+          glow.classList.add('is-active');
+        }
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', function () {
+        active = false;
+        glow.classList.remove('is-active');
+      });
+
+      function tick() {
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+        glow.style.transform = 'translate3d(' + (currentX - 300) + 'px, ' + (currentY - 300) + 'px, 0)';
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
 </body>
 </html>
