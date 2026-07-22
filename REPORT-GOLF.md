@@ -1,8 +1,8 @@
 # Report: Verticale Golf (`/golf`)
 
-Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5", "Round 6" più sotto).
+Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5", "Round 6", "Round 7" più sotto).
 
-## Cosa c'è (stato attuale, dopo Round 6)
+## Cosa c'è (stato attuale, dopo Round 7)
 
 - `/golf`: landing long-scroll con hero, trust marquee (riuso client esistenti), sezione "Componi il tuo kit" (13 prodotti selezionabili), struttura+grafica, come funziona e promessa consegna, rinnovo stagione, FAQ, form richiesta
 - `/golf/grazie`: thank-you dedicata, tag conversione golf separato (Google Ads condizionato a env var, GA4 sempre attivo)
@@ -57,6 +57,14 @@ Giovanni ha chiesto materiale fotografico migliore da Ultima Displays, utilizzab
 Di queste, due erano foto pulite di prodotti già esistenti nel selettore golf: un totem a cornice snap (per "Totem ingresso", SKU immagine `IP01`) e un roll up banner (per "Roll up premiazione", SKU immagine `UB146-850`). Seguendo l'indicazione esplicita di Giovanni di non aggiungere prodotti fuori contesto solo perché la foto era disponibile ("mettiamo prodotti con un senso"), usate **solo** queste due, entrambe già pertinenti al contesto gara/circolo: nessun nuovo item aggiunto al selettore. Il download diretto da ultimadisplays.it era bloccato da una protezione anti-bot del sito (verosimilmente innescata dal volume dell'audit); le due immagini sono state estratte via browser (canvas, non uno strumento di scraping).
 
 Prima versione: trattate in duotone navy/cream come le 4 foto esistenti. Giovanni ha corretto due cose dopo averle viste: proporzioni sbagliate (il riquadro forzava un ritaglio quadrato con `object-cover`, tagliando il totem, alto e stretto) e niente più bianco e nero sulle foto. Corretto entrambi: il riquadro foto ora usa `object-contain` (mostra il prodotto intero, senza ritagli forzati), e **il duotone è stato tolto da tutte e 6 le foto reali**, non solo le due nuove: anche fondale, gazebo, gonfiabile e segnaletica sono state riscaricate (stesso blocco anti-bot, stessa estrazione via browser) e riconvertite a colore originale. Il duotone non è più lo standard per le foto golf. Il selettore resta a 13 prodotti: ora 6 con foto reale a colori (non più 4 in duotone), 7 con card tipografica (non più 9).
+
+## Round 7 (22 luglio, foto reali per tutti i restanti 7 prodotti)
+
+Giovanni ha chiesto di non usare più le card tipografiche in nessun caso: foto anche se mostrano il nome del prodotto del fornitore o un tema generico, purché rispettino comunque le regole non negoziabili (niente modelli, niente nome/logo fornitore, niente nomi vietati, niente marchi reali di terzi). Assegnata una foto reale a tutti i 7 prodotti rimasti (bandiere gara/circolo/campo/istituzionali, banner, tovaglia, banchetto), pescando dal catalogo esteso di `PROJECTS/2promo/materiale-ultimadisplays.md` più 3 nuove foto di bandiere cercate mirate. Stesso blocco anti-bot del sito fornitore, stessa estrazione via browser (canvas), stesso trattamento a colore originale.
+
+Due scelte di compromesso, senza prodotto identico disponibile dal fornitore: "Tovaglia premiazioni" mostra un campione macro di tessuto stampato (non un prodotto tovaglia finito); "Banchetto segreteria" mostra un rendering 3D di una copertura da tavolo elasticizzata (non una fotografia reale, ma l'unica immagine disponibile per questo tipo di prodotto). Anche il roll up "Blizzard" (cactus con occhiali da sole), scartato nel Round 3 per tono giocoso, è stato riconsiderato e usato per "Banner personalizzati": nessuna regola violata, solo un tono non più considerato un ostacolo.
+
+**Il selettore "Componi il tuo kit" ha ora 13 prodotti, tutti con foto reale a colori, zero card tipografiche.**
 
 ## Lighthouse (build di produzione, locale, dopo Round 4)
 

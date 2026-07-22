@@ -21,14 +21,11 @@ Niente prezzo pubblicato sul sito: il modello è "componi il tuo kit", selezione
 
 ## Immagini
 
-La sezione "Componi il tuo kit" mostra 13 prodotti: 6 con foto reale anonimizzata (fondale, gazebo, gonfiabile, segnaletica, totem, roll up, tutte trattate in duotone navy/cream), 7 con una card tipografica piena (nome prodotto su blocco di colore, nessuna foto). Nessuna icona, nessun placeholder "Foto in arrivo".
-
-Il gruppo di prodotti senza foto reale è quasi interamente il tessile golf vero e proprio (bandiere gara, bandiere circolo, bandiere green, bandiere istituzionali, tovaglia), fornito da Canepa & Campi, verificato senza foto disponibile online. Anche banner e banchetto restano a card tipografica: le foto disponibili sul catalogo Ultima Displays mostrano solo modelli, render 3D o il nome commerciale proprietario vietato "Vector". Dettaglio completo di ogni scelta e di cosa è stato scartato in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (file interno).
+La sezione "Componi il tuo kit" mostra 13 prodotti, **tutti con foto reale, nessuna card tipografica**: colore originale (non duotone), nessuna icona, nessun placeholder "Foto in arrivo". Due sono scelte di compromesso (nessun prodotto identico disponibile dal fornitore): "Tovaglia premiazioni" mostra un campione di tessuto, "Banchetto segreteria" mostra un rendering 3D di una copertura da tavolo. Dettaglio completo di ogni scelta e di cosa è stato scartato in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (file interno).
 
 | Item | Dove | Nota |
 |---|---|---|
-| `[TBD-FOTO]` Bandiere gara, bandiere circolo, bandiere green, bandiere istituzionali, tovaglia | `src/data/golf-products.ts`, card `type: 'block'` | Da fotografare quando arriva un campione fisico, o recuperare da area riservata fornitore Canepa & Campi |
-| `[TBD-FOTO]` Banner, banchetto | `src/data/golf-products.ts`, card `type: 'block'` | Da recuperare da area riservata Ultima Displays (foto senza modello) o con un servizio fotografico proprio |
+| `[TBD-FOTO]` Tovaglia premiazioni, Banchetto segreteria | `src/data/golf-products.ts` | Se in futuro arriva un campione fisico o una foto prodotto dedicata, sostituire le foto di compromesso attuali con foto reali del prodotto specifico |
 
 ## Come procedere
 
