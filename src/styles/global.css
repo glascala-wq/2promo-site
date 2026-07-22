@@ -170,8 +170,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 600px;
-    height: 600px;
+    width: 320px;
+    height: 320px;
     background: radial-gradient(circle at center, rgba(254, 80, 0, 0.22) 0%, rgba(254, 80, 0, 0) 70%);
     pointer-events: none;
     z-index: 20;
@@ -182,13 +182,58 @@
   .pointer-glow.is-active {
     opacity: 1;
   }
+
+  /* ===== CURSORE PERSONALIZZATO (anello + puntino) ===== */
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(254, 80, 0, 0.55);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+  .cursor-ring.is-active {
+    opacity: 1;
+  }
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background: #FE5000;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: transform;
+  }
+  .cursor-dot.is-active {
+    opacity: 1;
+  }
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+
   @media (hover: none), (pointer: coarse) {
-    .pointer-glow {
+    .pointer-glow,
+    .cursor-ring,
+    .cursor-dot {
       display: none;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .pointer-glow {
+    .pointer-glow,
+    .cursor-ring,
+    .cursor-dot {
       display: none;
     }
   }

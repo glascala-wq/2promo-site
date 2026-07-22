@@ -228,40 +228,70 @@ const ogImageURL = new URL(ogImage, SITE);
     });
   </script>
 
-  <!-- Pointer glow — alone arancione che segue il mouse (solo desktop, rispetta reduced-motion) -->
+  <!-- Pointer glow + cursore personalizzato (solo desktop, rispetta reduced-motion) -->
   <script is:inline>
     (function () {
       if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+      var GLOW_SIZE = 320;
+      var RING_SIZE = 32;
+      var DOT_SIZE = 6;
+
+      document.documentElement.classList.add('custom-cursor-active');
+
       var glow = document.createElement('div');
       glow.className = 'pointer-glow';
       document.body.appendChild(glow);
 
+      var ring = document.createElement('div');
+      ring.className = 'cursor-ring';
+      document.body.appendChild(ring);
+
+      var dot = document.createElement('div');
+      dot.className = 'cursor-dot';
+      document.body.appendChild(dot);
+
       var targetX = window.innerWidth / 2;
       var targetY = window.innerHeight / 2;
-      var currentX = targetX;
-      var currentY = targetY;
+      var glowX = targetX, glowY = targetY;
+      var ringX = targetX, ringY = targetY;
+      var glowScale = 1;
       var active = false;
 
       window.addEventListener('mousemove', function (e) {
         targetX = e.clientX;
         targetY = e.clientY;
+        dot.style.transform = 'translate3d(' + (targetX - DOT_SIZE / 2) + 'px, ' + (targetY - DOT_SIZE / 2) + 'px, 0)';
         if (!active) {
           active = true;
           glow.classList.add('is-active');
+          ring.classList.add('is-active');
+          dot.classList.add('is-active');
         }
       }, { passive: true });
 
       document.addEventListener('mouseleave', function () {
         active = false;
         glow.classList.remove('is-active');
+        ring.classList.remove('is-active');
+        dot.classList.remove('is-active');
       });
 
+      window.addEventListener('mousedown', function () {
+        glowScale = 1.6;
+      }, { passive: true });
+
       function tick() {
-        currentX += (targetX - currentX) * 0.12;
-        currentY += (targetY - currentY) * 0.12;
-        glow.style.transform = 'translate3d(' + (currentX - 300) + 'px, ' + (currentY - 300) + 'px, 0)';
+        glowX += (targetX - glowX) * 0.12;
+        glowY += (targetY - glowY) * 0.12;
+        ringX += (targetX - ringX) * 0.25;
+        ringY += (targetY - ringY) * 0.25;
+        glowScale += (1 - glowScale) * 0.08;
+
+        glow.style.transform = 'translate3d(' + (glowX - GLOW_SIZE / 2) + 'px, ' + (glowY - GLOW_SIZE / 2) + 'px, 0) scale(' + glowScale + ')';
+        ring.style.transform = 'translate3d(' + (ringX - RING_SIZE / 2) + 'px, ' + (ringY - RING_SIZE / 2) + 'px, 0)';
+
         requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
