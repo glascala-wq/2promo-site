@@ -1,8 +1,8 @@
 # Report: Verticale Golf (`/golf`)
 
-Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5" più sotto).
+Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5", "Round 6" più sotto).
 
-## Cosa c'è (stato attuale, dopo Round 5)
+## Cosa c'è (stato attuale, dopo Round 6)
 
 - `/golf`: landing long-scroll con hero, trust marquee (riuso client esistenti), sezione "Componi il tuo kit" (13 prodotti selezionabili), struttura+grafica, come funziona e promessa consegna, rinnovo stagione, FAQ, form richiesta
 - `/golf/grazie`: thank-you dedicata, tag conversione golf separato (Google Ads condizionato a env var, GA4 sempre attivo)
@@ -49,6 +49,12 @@ Dettaglio di ogni foto scelta e scartata in `PROJECTS/2promo/verticale-golf/mapp
 ## Round 5 (22 luglio, "togliamo tee marker personalizzati")
 
 Giovanni ha chiesto di togliere "Tee marker personalizzati" dal catalogo del selettore. Rimosso l'item da `golf-products.ts`: il selettore passa da 14 a 13 prodotti (4 con foto reale, invariati; 9 con card tipografica, non più 10). Nessun altro file di codice toccato: la card era `type: 'block'`, nessuna foto o asset dedicato da rimuovere. Aggiornati i riferimenti in `TBD-REGISTRY.md` e in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (interno).
+
+## Round 6 (22 luglio, foto reali per totem e roll up)
+
+Giovanni ha chiesto materiale fotografico migliore da Ultima Displays, utilizzabile anche oltre al verticale golf. Eseguito un audit sistematico dell'intero catalogo fornitore (232 prodotti, non solo golf): estratti tutti gli URL dal sitemap, ogni immagine scaricata e giudicata visivamente da un agente, poi **ririverificata da zero da un secondo agente indipendente** con istruzione esplicita di cercare attivamente problemi mancati al primo giro. Il secondo giro ha scartato 9 immagini che il primo aveva approvato per errore (tra cui 4 foto di tessuto con un logo di certificazione reale, OEKO-TEX, non notato in modo coerente al primo giro): lezione operativa, un solo giro di giudizio automatico su materiale fornitore non è sufficiente, serve sempre una riverifica indipendente prima di considerare un'immagine sicura. Risultato: 49 immagini confermate su tutto il catalogo, catalogate in `PROJECTS/2promo/materiale-ultimadisplays.md` (interno, per riuso su tutto il sito, non solo golf).
+
+Di queste, due erano foto pulite di prodotti già esistenti nel selettore golf: un totem a cornice snap (per "Totem ingresso", SKU immagine `IP01`) e un roll up banner (per "Roll up premiazione", SKU immagine `UB146-850`). Seguendo l'indicazione esplicita di Giovanni di non aggiungere prodotti fuori contesto solo perché la foto era disponibile ("mettiamo prodotti con un senso"), usate **solo** queste due, entrambe già pertinenti al contesto gara/circolo: nessun nuovo item aggiunto al selettore. Il download diretto da ultimadisplays.it era bloccato da una protezione anti-bot del sito (verosimilmente innescata dal volume dell'audit); le due immagini sono state estratte via browser (canvas, non uno strumento di scraping) e trattate con lo stesso duotone navy/cream già in uso, incluso il fix trasparenza. Il selettore resta a 13 prodotti: ora 6 con foto reale (non più 4), 7 con card tipografica (non più 9).
 
 ## Lighthouse (build di produzione, locale, dopo Round 4)
 

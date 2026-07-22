@@ -80,9 +80,8 @@ export const GOLF_PRODUCTS: GolfProduct[] = [
     slug: 'totem',
     name: 'Totem ingresso',
     description: "Con l'identità del circolo all'entrata del campo.",
-    type: 'block',
-    blockBg: 'bg-orange-pale',
-    blockText: 'text-ink',
+    type: 'photo',
+    image: '/golf/products/totem-ingresso.webp',
   },
   {
     slug: 'banchetto',
@@ -96,9 +95,8 @@ export const GOLF_PRODUCTS: GolfProduct[] = [
     slug: 'rollup',
     name: 'Roll up premiazione',
     description: 'Sfondo per foto e consegna premi.',
-    type: 'block',
-    blockBg: 'bg-navy',
-    blockText: 'text-cream',
+    type: 'photo',
+    image: '/golf/products/rollup-premiazione.webp',
   },
   {
     slug: 'segnaletica',
