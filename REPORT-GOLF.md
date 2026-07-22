@@ -1,8 +1,8 @@
 # Report: Verticale Golf (`/golf`)
 
-Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5", "Round 6", "Round 7" più sotto).
+Branch `golf` su `glascala-wq/2promo-landing`. Sviluppato in autonomia secondo `PROJECTS/2promo/verticale-golf/cc-brief-golf.md`, approvato da Giovanni il 21 luglio 2026, con correzioni di rotta date da Giovanni in sessione lo stesso giorno e il giorno dopo (vedi "Round 2", "Round 3", "Round 4", "Round 5", "Round 6", "Round 7", "Round 8" più sotto).
 
-## Cosa c'è (stato attuale, dopo Round 7)
+## Cosa c'è (stato attuale, dopo Round 8)
 
 - `/golf`: landing long-scroll con hero, trust marquee (riuso client esistenti), sezione "Componi il tuo kit" (13 prodotti selezionabili), struttura+grafica, come funziona e promessa consegna, rinnovo stagione, FAQ, form richiesta
 - `/golf/grazie`: thank-you dedicata, tag conversione golf separato (Google Ads condizionato a env var, GA4 sempre attivo)
@@ -65,6 +65,17 @@ Giovanni ha chiesto di non usare più le card tipografiche in nessun caso: foto 
 Due scelte di compromesso, senza prodotto identico disponibile dal fornitore: "Tovaglia premiazioni" mostra un campione macro di tessuto stampato (non un prodotto tovaglia finito); "Banchetto segreteria" mostra un rendering 3D di una copertura da tavolo elasticizzata (non una fotografia reale, ma l'unica immagine disponibile per questo tipo di prodotto). Anche il roll up "Blizzard" (cactus con occhiali da sole), scartato nel Round 3 per tono giocoso, è stato riconsiderato e usato per "Banner personalizzati": nessuna regola violata, solo un tono non più considerato un ostacolo.
 
 **Il selettore "Componi il tuo kit" ha ora 13 prodotti, tutti con foto reale a colori, zero card tipografiche.**
+
+## Round 8 (22 luglio, correzioni di coerenza foto/descrizione)
+
+Giovanni ha rivisto la griglia del Round 7 e segnalato 4 correzioni:
+
+1. **Gazebo hospitality**: foto bianca ("sembra da ospedale") sostituita con una versione colorata ("Steel Tent", verde menta a pois), stessa fonte fornitore.
+2. **Tovaglia premiazioni e Banchetto segreteria**: le due foto erano scambiate rispetto al senso dei nomi (il rendering "Gala", una copertura da tavolo, era su "Banchetto" invece che su "Tovaglia"). Corretto lo scambio. Per il nuovo "Banchetto segreteria" servita una foto diversa: **verificata l'intera categoria "Banchetti" del fornitore** (9 prodotti) e confermato che ogni prodotto con stampa a colori riusa una di due foto stock di modelle (le stesse gia scartate nei round precedenti su altri SKU della stessa linea). Nessuna foto banchetto pulita esiste in questo catalogo. Provata anche una ricerca stock esterna generica (tavolo reception/registrazione), ma nessun risultato nello stesso stile "prodotto isolato su sfondo bianco" del resto della griglia. Soluzione temporanea: riusato il campione di tessuto liberato dallo scambio, segnalato come compromesso da migliorare quando disponibile una foto vera.
+3. **Bandiere istituzionali**: Ultima Displays non vende bandiere di paese o federazione (solo strutture bandiera personalizzabili). Usata per la prima volta una foto **stock esterna, non dal fornitore golf**: bandiera italiana al vento, da Pexels (licenza gratuita per uso commerciale, nessuna attribuzione richiesta).
+4. **Bandiere campo (18 buche)**: la bandierina da buca non è un prodotto Ultima Displays (loro vendono bandiere fieristiche, non attrezzatura da campo golf). Usata una foto stock esterna da Pexels: bandierina gialla in buca, nessuna persona, nessun logo di club reale visibile (due foto scartate prima di questa: una con un giocatore sullo sfondo, una con il logo di un circolo reale sulla bandiera).
+
+Prima volta in questo progetto che si esce dal catalogo Ultima Displays per una foto prodotto: giustificato perche il fornitore semplicemente non vende quei due tipi di prodotto (bandiere nazionali, bandierine da buca), non per scelta di comodo.
 
 ## Lighthouse (build di produzione, locale, dopo Round 4)
 

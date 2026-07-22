@@ -21,11 +21,12 @@ Niente prezzo pubblicato sul sito: il modello è "componi il tuo kit", selezione
 
 ## Immagini
 
-La sezione "Componi il tuo kit" mostra 13 prodotti, **tutti con foto reale, nessuna card tipografica**: colore originale (non duotone), nessuna icona, nessun placeholder "Foto in arrivo". Due sono scelte di compromesso (nessun prodotto identico disponibile dal fornitore): "Tovaglia premiazioni" mostra un campione di tessuto, "Banchetto segreteria" mostra un rendering 3D di una copertura da tavolo. Dettaglio completo di ogni scelta e di cosa è stato scartato in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (file interno).
+La sezione "Componi il tuo kit" mostra 13 prodotti, **tutti con foto reale, nessuna card tipografica**: colore originale (non duotone), nessuna icona, nessun placeholder "Foto in arrivo". Due bandiere (istituzionali, campo) usano foto stock esterne (Pexels) perché il fornitore Ultima Displays non vende quei prodotti. Dettaglio completo di ogni scelta in `PROJECTS/2promo/verticale-golf/mapping-prodotti.md` (file interno).
 
 | Item | Dove | Nota |
 |---|---|---|
-| `[TBD-FOTO]` Tovaglia premiazioni, Banchetto segreteria | `src/data/golf-products.ts` | Se in futuro arriva un campione fisico o una foto prodotto dedicata, sostituire le foto di compromesso attuali con foto reali del prodotto specifico |
+| `[TBD-FOTO]` Banchetto segreteria | `src/data/golf-products.ts`, immagine `banchetto.webp` | **Compromesso non risolto**: mostra un campione di tessuto, non un banchetto. Nessuna foto pulita di banchetto esiste nel catalogo Ultima Displays (tutte le foto a colori mostrano una modella) e nessuna alternativa stock nello stesso stile è stata trovata. Serve una foto vera del prodotto: campione fisico fotografato in proprio, area riservata fornitore, o servizio fotografico dedicato. |
+| `[TBD-FOTO]` Tovaglia premiazioni | `src/data/golf-products.ts`, immagine `tovaglia.webp` | Mostra un rendering 3D ("Gala"), non una foto reale. Da sostituire se arriva una foto reale del prodotto. |
 
 ## Come procedere
 
