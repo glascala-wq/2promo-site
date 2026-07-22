@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activeRoute?: 'home' | 'custom' | 'catalogo' | 'preventivo' | 'other';
+  activeRoute?: 'home' | 'custom' | 'catalogo' | 'allestimenti' | 'preventivo' | 'other';
 }
 const { activeRoute = 'home' } = Astro.props;
 ---
@@ -13,6 +13,7 @@ const { activeRoute = 'home' } = Astro.props;
       <a href="/" class={`nav-link hover:text-orange transition ${activeRoute === 'home' ? 'active' : ''}`}>Home</a>
       <a href="/custom" class={`nav-link hover:text-orange transition ${activeRoute === 'custom' ? 'active' : ''}`}>Custom</a>
       <a href="/catalogo" class={`nav-link hover:text-orange transition ${activeRoute === 'catalogo' ? 'active' : ''}`}>Catalogo</a>
+      <a href="/allestimenti" class={`nav-link hover:text-orange transition ${activeRoute === 'allestimenti' ? 'active' : ''}`}>Allestimenti</a>
       <a href="/preventivo" class={`nav-link hover:text-orange transition ${activeRoute === 'preventivo' ? 'active' : ''}`}>Preventivo</a>
     </div>
     <div class="flex items-center gap-4">
