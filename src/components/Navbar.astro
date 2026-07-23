@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activeRoute?: 'home' | 'gadget' | 'custom' | 'catalogo' | 'allestimenti' | 'preventivo' | 'other';
+  activeRoute?: 'home' | 'gadget' | 'custom' | 'catalogo' | 'allestimenti' | 'tecniche-di-stampa' | 'chi-siamo' | 'preventivo' | 'other';
 }
 const { activeRoute = 'home' } = Astro.props;
 ---
@@ -9,12 +9,14 @@ const { activeRoute = 'home' } = Astro.props;
     <a href="/" style="text-decoration:none;">
       <img src="/brand/logo.svg" alt="2promo.it: gadget e allestimenti personalizzati" class={`h-10 md:h-12 w-auto ${activeRoute === 'home' ? 'logo-intro' : ''}`} width="600" height="218" fetchpriority="high" />
     </a>
-    <div class="hidden md:flex items-center gap-7 text-sm font-bold">
+    <div class="hidden lg:flex items-center gap-5 text-sm font-bold whitespace-nowrap">
       <a href="/" class={`nav-link hover:text-orange transition ${activeRoute === 'home' ? 'active' : ''}`}>Home</a>
       <a href="/gadget" class={`nav-link hover:text-orange transition ${activeRoute === 'gadget' ? 'active' : ''}`}>Gadget</a>
       <a href="/custom" class={`nav-link hover:text-orange transition ${activeRoute === 'custom' ? 'active' : ''}`}>Custom</a>
       <a href="/allestimenti" class={`nav-link hover:text-orange transition ${activeRoute === 'allestimenti' ? 'active' : ''}`}>Allestimenti</a>
       <a href="/catalogo" class={`nav-link hover:text-orange transition ${activeRoute === 'catalogo' ? 'active' : ''}`}>Catalogo</a>
+      <a href="/tecniche-di-stampa-gadget-personalizzati" class={`nav-link hover:text-orange transition ${activeRoute === 'tecniche-di-stampa' ? 'active' : ''}`}>Tecniche di Stampa</a>
+      <a href="/chi-siamo" class={`nav-link hover:text-orange transition ${activeRoute === 'chi-siamo' ? 'active' : ''}`}>Chi Siamo</a>
       <a href="/preventivo" class={`nav-link hover:text-orange transition ${activeRoute === 'preventivo' ? 'active' : ''}`}>Preventivo</a>
     </div>
     <div class="flex items-center gap-4">
@@ -22,7 +24,7 @@ const { activeRoute = 'home' } = Astro.props;
         href="https://wa.me/393451448645?text=Ciao%202promo%2C%20vorrei%20un%20preventivo"
         target="_blank"
         rel="noopener"
-        class="hidden md:inline-flex items-center gap-2 text-sm font-bold text-ink hover:text-orange transition"
+        class="hidden lg:inline-flex items-center gap-2 text-sm font-bold text-ink hover:text-orange transition"
         aria-label="Scrivici su WhatsApp"
         style="text-decoration:none;"
       >
