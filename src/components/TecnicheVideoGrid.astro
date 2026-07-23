@@ -1,0 +1,157 @@
+---
+import { TECNICHE_VIDEOS } from '../data/tecniche-videos';
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+}
+
+const { eyebrow = 'la rubrica in video', heading = 'Tecniche di Stampa — come diamo vita ai tuoi loghi' } = Astro.props;
+
+const uploadDate = '2026-05-12';
+
+// ItemList di VideoObject (GEO/SEO) — auto-generato dagli stessi dati della griglia, niente duplicazione.
+const videoJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: TECNICHE_VIDEOS.map((v) => ({
+    '@type': 'ListItem',
+    position: v.episodio,
+    item: {
+      '@type': 'VideoObject',
+      name: `Tecniche di Stampa — Ep. ${String(v.episodio).padStart(2, '0')}: ${v.titolo}`,
+      description: v.descrizione,
+      thumbnailUrl: `https://www.2promo.it${v.poster}`,
+      contentUrl: `https://www.2promo.it${v.video}`,
+      uploadDate,
+      duration: `PT${v.durataSecondi}S`,
+    },
+  })),
+}).replace(/</g, '\\u003c');
+---
+
+<section id="tecniche-di-stampa-video" class="bg-cream pb-16 md:pb-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex items-center gap-3 mb-6" data-reveal>
+      <span class="eyebrow text-orange">{eyebrow}</span>
+    </div>
+    <h2 class="font-display-tight text-4xl md:text-5xl leading-[0.95] text-ink mb-12 max-w-3xl" data-reveal set:html={heading} />
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {TECNICHE_VIDEOS.map((v) => (
+        <div class="tecnica-card group" data-reveal>
+          <div class="relative aspect-square rounded-2xl overflow-hidden bg-ink">
+            <video
+              class="tecnica-video w-full h-full object-cover"
+              muted
+              playsinline
+              loop
+              preload="none"
+              poster={v.poster}
+              data-src={v.video}
+              aria-label={`Video: ${v.titolo} — tecnica di stampa`}
+            >
+              <source data-src={v.video} type="video/mp4" />
+            </video>
+            <button
+              type="button"
+              class="tecnica-toggle absolute inset-0 flex items-center justify-center bg-ink/0 group-hover:bg-ink/10 transition"
+              aria-label={`Riproduci o metti in pausa: ${v.titolo}`}
+              aria-pressed="false"
+            >
+              <span class="tecnica-play-icon w-12 h-12 rounded-full bg-cream/90 flex items-center justify-center shadow-md">
+                <svg class="tecnica-icon-play w-5 h-5 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="tecnica-icon-pause w-5 h-5 text-ink hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+              </span>
+            </button>
+            <span class="absolute top-3 left-3 eyebrow text-cream bg-ink/60 rounded-full px-3 py-1 text-[0.65rem]">
+              Ep. {String(v.episodio).padStart(2, '0')}
+            </span>
+          </div>
+          <h3 class="font-display-tight text-lg text-ink mt-4 mb-1">{v.titolo}</h3>
+          <p class="text-sm text-ink/70 leading-relaxed">{v.descrizione}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="border-t border-ink/10 mt-14 pt-10 text-center" data-reveal>
+      <p class="font-display-tight text-2xl md:text-3xl text-ink leading-tight mb-6 max-w-xl mx-auto">
+        Vuoi vedere la tecnica giusta applicata al tuo logo?
+      </p>
+      <a
+        href="/preventivo"
+        class="btn-orange bg-orange text-cream px-8 py-4 rounded-full font-bold tracking-wide hover:bg-ink transition inline-block"
+        style="text-decoration:none;"
+      >
+        Richiedi un preventivo →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={videoJsonLd} />
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var cards = document.querySelectorAll('.tecnica-card');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setPlayingState(card, playing) {
+      var btn = card.querySelector('.tecnica-toggle');
+      var playIcon = card.querySelector('.tecnica-icon-play');
+      var pauseIcon = card.querySelector('.tecnica-icon-pause');
+      if (btn) btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      if (playIcon) playIcon.classList.toggle('hidden', playing);
+      if (pauseIcon) pauseIcon.classList.toggle('hidden', !playing);
+    }
+
+    function loadSource(video) {
+      if (video.dataset.loaded) return;
+      var source = video.querySelector('source');
+      if (source && source.dataset.src) source.src = source.dataset.src;
+      if (video.dataset.src) video.src = video.dataset.src;
+      video.load();
+      video.dataset.loaded = 'true';
+    }
+
+    cards.forEach(function (card) {
+      var video = card.querySelector('.tecnica-video');
+      var toggle = card.querySelector('.tecnica-toggle');
+      if (!video || !toggle) return;
+
+      toggle.addEventListener('click', function () {
+        loadSource(video);
+        if (video.paused) {
+          video.play();
+          setPlayingState(card, true);
+        } else {
+          video.pause();
+          setPlayingState(card, false);
+        }
+      });
+
+      video.addEventListener('pause', function () { setPlayingState(card, false); });
+      video.addEventListener('play', function () { setPlayingState(card, true); });
+    });
+
+    if (!reduceMotion && typeof IntersectionObserver !== 'undefined') {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            var card = entry.target;
+            var video = card.querySelector('.tecnica-video');
+            if (!video) return;
+            if (entry.isIntersecting) {
+              loadSource(video);
+              video.play().catch(function () {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+      cards.forEach(function (card) { observer.observe(card); });
+    }
+  });
+</script>
