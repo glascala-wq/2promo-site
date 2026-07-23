@@ -105,6 +105,11 @@ const ogImageURL = new URL(ogImage, SITE);
     (window.requestIdleCallback || window.setTimeout)(function(){ setTimeout(loadGtag, 4000); }, { timeout: 5000 });
   </script>
 
+  <!-- Metricool — analisi traffico/social -->
+  <script is:inline>
+    function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"b10aec1d93213983bd4ed5d07819fadf"})});
+  </script>
+
   <!-- GSAP + ScrollTrigger (from CDN) — defer per non bloccare il render -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer is:inline></script>
