@@ -112,20 +112,6 @@ const videoJsonLd = JSON.stringify({
   <div class="max-w-xl w-full">
     <div class="relative aspect-square rounded-2xl overflow-hidden bg-ink">
       <video id="tecnica-lightbox-video" class="w-full h-full object-cover cursor-pointer" muted playsinline loop preload="none"></video>
-      <button
-        type="button"
-        id="tecnica-lightbox-mute"
-        class="absolute bottom-3 left-3 w-11 h-11 rounded-full bg-ink/60 flex items-center justify-center hover:bg-orange transition"
-        aria-label="Attiva audio"
-        aria-pressed="false"
-      >
-        <svg class="tecnica-mute-icon-off w-5 h-5 text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M23 9 17 15M17 9l6 6"/>
-        </svg>
-        <svg class="tecnica-mute-icon-on w-5 h-5 text-cream hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/>
-        </svg>
-      </button>
     </div>
     <div class="mt-5 text-center">
       <h3 id="tecnica-lightbox-title" class="font-display-tight text-2xl text-cream mb-1"></h3>
@@ -176,19 +162,7 @@ const videoJsonLd = JSON.stringify({
     var lightboxTitle = document.getElementById('tecnica-lightbox-title');
     var lightboxDesc = document.getElementById('tecnica-lightbox-desc');
     var lightboxClose = document.getElementById('tecnica-lightbox-close');
-    var lightboxMute = document.getElementById('tecnica-lightbox-mute');
-    var muteIconOff = lightboxMute ? lightboxMute.querySelector('.tecnica-mute-icon-off') : null;
-    var muteIconOn = lightboxMute ? lightboxMute.querySelector('.tecnica-mute-icon-on') : null;
     var lastFocused = null;
-
-    function setMuteIcon(muted) {
-      if (muteIconOff) muteIconOff.classList.toggle('hidden', !muted);
-      if (muteIconOn) muteIconOn.classList.toggle('hidden', muted);
-      if (lightboxMute) {
-        lightboxMute.setAttribute('aria-pressed', muted ? 'false' : 'true');
-        lightboxMute.setAttribute('aria-label', muted ? 'Attiva audio' : 'Disattiva audio');
-      }
-    }
 
     if (lightbox && lightboxVideo && lightboxClose) {
       function openLightbox(data) {
@@ -197,8 +171,6 @@ const videoJsonLd = JSON.stringify({
         lightboxVideo.poster = data.poster;
         lightboxTitle.textContent = data.title;
         lightboxDesc.textContent = data.desc;
-        lightboxVideo.muted = true;
-        setMuteIcon(true);
         lightbox.classList.remove('hidden');
         lightbox.classList.add('flex');
         lightboxVideo.currentTime = 0;
@@ -215,13 +187,6 @@ const videoJsonLd = JSON.stringify({
         lightboxVideo.load();
         document.body.style.overflow = '';
         if (lastFocused && lastFocused.focus) lastFocused.focus();
-      }
-
-      if (lightboxMute) {
-        lightboxMute.addEventListener('click', function () {
-          lightboxVideo.muted = !lightboxVideo.muted;
-          setMuteIcon(lightboxVideo.muted);
-        });
       }
 
       lightboxVideo.addEventListener('click', function () {
